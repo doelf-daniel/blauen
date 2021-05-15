@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,EAAG;EACD,OAAO,EAAE,GAAG;;AAGd,gBAAiB;EACf,UAAU,EAAE,MAAM;;AAGpB,qBAAsB;EACpB,UAAU,EAAE,KAAK;EACjB,YAAY,EAAE,MAAM;;AAGtB,UAAW;EACT,SAAS,EAAE,IAAI;EACf,UAAU,EAAE,IAAI",
+"sources": ["../scss/actual-data.scss"],
+"names": [],
+"file": "actual-data.css"
+}

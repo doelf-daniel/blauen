@@ -1,0 +1,46 @@
+
+.content-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+
+.item {
+  border: blue solid 1px;
+  padding: 10px;
+}
+
+.item-b {
+  border: blue solid 1px;
+  padding: 10px;
+  justify-self: stretch;
+}
+
+.responsive {
+  width: 100%;
+  height: auto;
+}
+
+.em-table {
+  td {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .right-align {
+    text-align: right;
+  }
+
+  .center {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  .content-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+

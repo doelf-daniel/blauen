@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+{% load static common_tags %}
+{% load tz %}
+
+{% block title %}Daten{% endblock %}
+
+{% block css %}
+    <link href="{% static 'css/datepicker1.css' %}" rel="stylesheet">
+    <link href="{% static 'css/messwerte.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block leftAside %}
+
+
+{% endblock leftAside %}
+
+{% block content %}
+    <div class="container">
+    <div class="item">
+
+            <h2>Wetterdaten {{ actual_date|date:"d.m.Y" }}</h2>
+
+            <div class="item">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="chart-form-div">
+                        {{ form }}
+                        <input id="submit-button" class="button" type="submit" value="...">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+        {% if has_data %}
+            <table  class="dataTable table-bordered">
+            <thead>
+                <tr>
+                    <th>Datumzeit</th>
+                    <th>Temperatur</th>
+                    <th>Luftdruck</th>
+                    <th>rel.Feuchte</th>
+                    <th>Windgeschwindigkeit</th>
+                    <th>Windrichtung</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for row in messwerte %}
+                <tr>
+                {% localtime on %}
+                    <td>{{ row.datumzeit|date:"d.m.Y - H:i" }}</td>
+                {% endlocaltime %}
+                <td class="column-rightadjusted">
+                    {% if row.t %}
+                    {{ row.t|dec_format:1  }}
+                    {% endif %}
+                </td>
+                <td class="column-rightadjusted">
+                    {% if row.p %}
+                    {{ row.p|dec_format:1 }}
+                    {% endif %}
+                </td>
+                <td class="column-rightadjusted">
+                    {% if row.h|dec_format:1 %}
+                    {{ row.h }}
+                    {% endif %}
+                </td>
+                <td class="column-rightadjusted">
+                    {% if row.v|dec_format:1 %}
+                    {{ row.v }}
+                    {% endif %}
+                </td>
+                <td class="column-rightadjusted">
+                    {% if row.dir|dec_format:1 %}
+                    {{ row.dir }}
+                    {% endif %}
+                </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+            </table>
+        {% else %}
+        <h4>Aktuell keine Daten vorhanden</h4>
+        {% endif %}
+    </div>
+
+{% endblock %}

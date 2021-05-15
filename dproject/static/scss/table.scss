@@ -1,0 +1,86 @@
+[id=dataTable] table {
+  border-collapse: collapse;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #707070;
+  font: 14px Georgia, serif;
+  padding: 0;
+  box-shadow: 1px 1px 3px 1px #6E6D6D;
+  table-layout: fixed;
+
+  th {
+    color: #FFFFFF;
+    background: #304999;
+    font-weight: bold;
+    padding-left: 1.0rem;
+    padding-right: 1.0rem;
+    text-align: center;
+    vertical-align: top;
+  }
+
+  tr {
+    color: #000000;
+    font-weight: normal;
+
+    hover td {
+      background: #0E1E61;
+      color: #FFFFFF;
+    }
+
+    tr:nth-child(odd) td {
+      background: #bbccFF;
+    }
+
+    tr:nth-child(odd):hover td {
+      background: #0E1E61;
+    }
+
+    td {
+      font-size: 0.8em;
+      background: #FFFFFF;
+      padding: 0.2em 0.6em;
+      text-align: left;
+      vertical-align: top;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #bbb;
+    }
+
+    .column-centered {
+      text-align: center;
+    }
+
+    .column-rightadjusted {
+      text-align: right;
+    }
+  }
+}
+
+table tr td ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.table_in_table {
+  border-width: 0;
+  border-collapse: collapse;
+
+
+  tr:nth-child(odd) td {
+    background: transparent;
+  }
+
+  tr:nth-child(odd):hover td {
+    background: transparent;
+  }
+}
+
+.hidden_col {
+  display: none;
+}
+
+.table-bordered {
+  border: 1px solid #eceeef;
+}
+

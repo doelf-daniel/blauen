@@ -1,0 +1,23 @@
+////////////////////////////////
+//Variables//
+////////////////////////////////
+
+// colors
+
+$white: #fff;
+$mint-green: #d6e9c6;
+$black: #000;
+$pink: #f2dede;
+$dark-pink: #eed3d7;
+$red: #b94a48;
+$dark-blue: #00aa00; // #0000aa;
+
+$table-header-background1: #304999;
+$table-header-background2: rgba(40, 68, 157, 0.8);
+
+// Mixin
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}

@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static %}
+{% load common_tags %}
+
+{% block head %}
+{% endblock %}
+
+{% block css %}
+    <link href="{% static 'css/first.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+    <div class="content-container">
+
+        <a href="{% url 'wetterdaten:chart' %}">
+            <div class="item">
+                {% if data1 == 'has no data' %}
+                    <h3 class="warning" style="margin-top: 5.0em; margin-bottom: 5.0em;margin-left: 3.0em;">
+                        Keine Daten vorhanden.
+                    </h3>
+                {% else %}
+                    <img src="data:image/png;base64, {{ image_base64_1 }}" class="responsive" alt="chart"/>
+                {% endif %}
+            </div>
+        </a>
+
+        <a href="{% url 'wetterdaten:chart' %}">
+            <div class="item">
+                {% if data2 == 'has no data' %}
+                    <h3 class="warning" style="margin-top: 5.0em; margin-bottom: 5.0em;margin-left: 3.0em;">
+                        Keine Daten vorhanden.
+                    </h3>
+                {% else %}
+                    <img src="data:image/png;base64, {{ image_base64_2 }}" class="responsive" alt="chart"/>
+                {% endif %}
+            </div>
+        </a>
+
+        <a href="{% url 'energie:produktion' %}">
+            <div class="item">
+                {% if data3 == 'has no data' %}
+                    <h3 class="warning" style="margin-top: 5.0em; margin-bottom: 5.0em;margin-left: 3.0em;">
+                        Keine Daten vorhanden.
+                    </h3>
+                {% else %}
+                    <img src="data:image/png;base64, {{ image_base64_3 }}" class="responsive" alt="chart"/>
+                {% endif %}
+            </div>
+        </a>
+
+
+        <div class="item-b">
+            <h4>Elektrizität: Verbrauch, Produktion in kWh</h4>
+            <table class="em-table">
+                <tr>
+                    <td></td>
+                    <td class="center">Produktion</td>
+                    <td class="center">Verbrauch</td>
+                    <td class="center">Differenz</td>
+                </tr>
+                <tr>
+                    <td colspan="4"><b>Total</b></td>
+                </tr>
+                <tr>
+                    <td>{{ eset_total.date_from|date:"d.m.Y" }} bis {{ eset_total.date_to|date:"d.m.Y" }}</td>
+                    <td class="right-align">{{ eset_total.production|dec_format }}</td>
+                    <td class="right-align">{{ eset_total.consumption|dec_format }}</td>
+                    <td class="right-align">{{ eset_total.difference|dec_format }}</td>
+                </tr>
+                <tr>
+                    <td colspan="4"><b>Wochendaten</b></td>
+                </tr>
+                <tr>
+                    <td>{{ eset_week1.date_from|date:"d.m.Y" }} bis {{ eset_week1.date_to|date:"d.m.Y" }}</td>
+                    <td class="right-align">{{ eset_week1.production|dec_format }}</td>
+                    <td class="right-align">{{ eset_week1.consumption|dec_format }}</td>
+                    <td class="right-align">{{ eset_week1.difference|dec_format }}</td>
+                </tr>
+                <tr>
+                    <td>{{ eset_week2.date_from|date:"d.m.Y" }} bis {{ eset_week2.date_to|date:"d.m.Y" }}</td>
+                    <td class="right-align">{{ eset_week2.production|dec_format }}</td>
+                    <td class="right-align">{{ eset_week2.consumption|dec_format }}</td>
+                    <td class="right-align">{{ eset_week2.difference|dec_format }}</td>
+                </tr>
+                <tr>
+                    <td><b>Tagesdaten</b></td>
+                </tr>
+                <tr>
+                    <td>{{ eset_day1.date_from|date:"d.m.Y" }}</td>
+                    <td class="right-align"> {{ eset_day1.production|dec_format }}</td>
+                    <td class="right-align">{{ eset_day1.consumption|dec_format }}</td>
+                    <td class="right-align">{{ eset_day1.difference|dec_format }}</td>
+                </tr>
+                <tr>
+                    <td>{{ eset_day2.date_from | date:"d.m.Y" }}</td>
+                    <td class="right-align"> {{ eset_day2.production|dec_format }}</td>
+                    <td class="right-align">{{ eset_day2.consumption|dec_format }}</td>
+                    <td class="right-align">{{ eset_day2.difference|dec_format }}</td>
+                </tr>
+                <tr>
+                    <td>{{ eset_day3.date_from | date:"d.m.Y" }}</td>
+                    <td class="right-align"> {{ eset_day3.production|dec_format }}</td>
+                    <td class="right-align">{{ eset_day3.consumption|dec_format }}</td>
+                    <td class="right-align">{{ eset_day3.difference|dec_format }}</td>
+                </tr>
+
+            </table>
+        </div>
+
+    </div>
+{% endblock %}
