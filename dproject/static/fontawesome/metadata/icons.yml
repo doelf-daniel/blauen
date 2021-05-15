@@ -2255,7 +2255,7 @@ burn:
   search:
     terms:
       - caliente
-      - energy
+      - energie
       - fire
       - flame
       - gas
@@ -10715,7 +10715,7 @@ lightbulb:
   label: Lightbulb
   search:
     terms:
-      - energy
+      - energie
       - idea
       - inspiration
       - light
@@ -15805,7 +15805,7 @@ solar-panel:
     terms:
       - clean
       - eco-friendly
-      - energy
+      - energie
       - green
       - sun
   styles:

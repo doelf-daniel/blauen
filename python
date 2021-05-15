@@ -1,3 +1,0 @@
-export DJANGO_SETTINGS_MODULE=config.settings.local
-export PYTHONPATH=$HOME/blauen
-~/.virtualenvs/blauen/bin/python $1 $2 $3 $4 $5 $6

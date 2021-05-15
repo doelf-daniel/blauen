@@ -3,6 +3,10 @@
 .AppleDouble
 .LSOverride
 
+#pycharm
+.idea
+
+
 ### SublimeText ###
 # cache files for sublime text
 *.tmlanguage.cache
@@ -22,6 +26,8 @@ sftp-config.json
 # Basics
 *.py[cod]
 __pycache__
+.pytest_cache
+
 
 # Logs
 logs
@@ -35,12 +41,16 @@ npm-debug.log*
 nosetests.xml
 htmlcov
 
+
 # Translations
 *.mo
 *.pot
 
 # Pycharm
 .idea/*
+
+# VSCODE
+.pytest_cache/*
 
 
 # Vim
@@ -57,12 +67,16 @@ node_modules/
 
 # virtual environments
 .env
+.venv
 
 # User-uploaded media
 dproject/media/
 
 # collected static file directory
 staticfiles/
+
+# local database sqlite
+**/db.sqlite3
 
 # SQL dumps
 *.sql

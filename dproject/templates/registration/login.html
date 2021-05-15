@@ -1,18 +1,22 @@
-{% extends "registration/base.html" %}
-{% load i18n %}
-{% load crispy_forms_tags %}
+{% extends "registration/base_registration.html" %}
+{% load static %}
 
-{% block title %}{% trans 'Log in' %}{% endblock %}
+{% block css %}
+    <link href="{% static 'css/register.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}Log in{% endblock %}
 
 {% block inner %}
-<div class="text-center">
-  <h2>{% trans 'Log in' %}</h2>
-</div>
-<form class="login" method="post" action=".">
-  {% csrf_token %}
-  {{ form|crispy }}
-  <div class="form-group text-center">
-    <button class="btn btn-primary" type="submit">{% trans "Log in" %}</button>
-  </div>
-</form>
+    <div class="text-center">
+        <h2>Log in</h2>
+    </div>
+    <form class="login" method="post" action=".">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>
+            <label>&nbsp;</label>
+            <button class="btn btn-primary" type="submit">Log in</button>
+        </p>
+    </form>
 {% endblock %}

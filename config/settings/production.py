@@ -21,20 +21,20 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool(
 SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
     'DJANGO_SECURE_CONTENT_TYPE_NOSNIFF', default=True)
 SECURE_BROWSER_XSS_FILTER = True
-#SESSION_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_HTTPONLY = True
 SECURE_SSL_REDIRECT = env.bool('DJANGO_SECURE_SSL_REDIRECT', default=False)
-#CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
-#X_FRAME_OPTIONS = 'DENY'
+# X_FRAME_OPTIONS = 'DENY'
 
 # Disable DEBUG mode
 DEBUG = False
+
 if 'TEMPLATES' in locals():
-    for num,t in enumerate(TEMPLATES):
+    for num, t in enumerate(TEMPLATES):
         if type(t.get('OPTIONS')) is dict:
             TEMPLATES[num]['OPTIONS']['debug'] = DEBUG
-
 
 # SITE CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -43,8 +43,7 @@ if 'TEMPLATES' in locals():
 ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['*'])
 # END SITE CONFIGURATION
 
-INSTALLED_APPS += ('gunicorn', )
-
+INSTALLED_APPS += ('gunicorn',)
 
 # TEMPLATE CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -54,7 +53,6 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [
     ('django.template.loaders.cached.Loader', [
         'django.template.loaders.filesystem.Loader', 'django.template.loaders.app_directories.Loader', ]),
 ]
-
 
 # CACHING
 # ------------------------------------------------------------------------------
@@ -73,7 +71,5 @@ CACHES = {
 }
 """
 
-
 # Your production stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
-

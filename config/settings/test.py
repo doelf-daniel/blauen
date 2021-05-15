@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
-'''
+"""
 Test settings
 
 - Used to run tests fast on the continuous integration server and locally
-'''
+"""
 
 from .common import *  # noqa
-
 
 # DEBUG
 # ------------------------------------------------------------------------------
@@ -14,11 +13,9 @@ from .common import *  # noqa
 DEBUG = False
 TEMPLATES[0]['OPTIONS']['debug'] = False
 
-
 # In-memory email backend stores messages in django.core.mail.outbox
 # for unit testing purposes
 EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
-
 
 # CACHING
 # ------------------------------------------------------------------------------
@@ -30,11 +27,9 @@ CACHES = {
     }
 }
 
-
 # TESTING
 # ------------------------------------------------------------------------------
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
-
 
 # PASSWORD HASHING
 # ------------------------------------------------------------------------------
@@ -42,7 +37,6 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.MD5PasswordHasher',
 )
-
 
 # TEMPLATE LOADERS
 # ------------------------------------------------------------------------------
@@ -54,3 +48,10 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [
     ]),
 ]
 
+# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(ROOT_DIR, 'testdb.sqlite3'),
+    }
+}

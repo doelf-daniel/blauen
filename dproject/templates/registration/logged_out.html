@@ -1,7 +1,7 @@
-{% extends "registration/base.html" %}
+{% extends "registration/base_registration.html" %}
 {% load i18n %}
 
 {% block inner %}
-<h2>{% trans 'Logged out' %}</h2>
-<p><a href="{% url 'login' %}">{% trans 'Log in again' %}</a></p>
+    <h2>Abgemeldet</h2>
+    <p><a href="{% url 'login' %}">Wieder anmelden.</a></p>
 {% endblock %}
