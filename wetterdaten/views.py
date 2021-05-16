@@ -27,6 +27,17 @@ def path4chart_factory(file_name):
     return chart_path
 
 
+def create_image_base64(fig):
+    """
+        Create Base64-String eines Bildes (fig)
+    """
+    buf = BytesIO()
+    fig.savefig(buf, format='png')
+    image_base64 = base64.b64encode(buf.getvalue()).decode('utf-8').replace('\n', '')
+    buf.close()
+    return image_base64
+
+
 class WetterdatenChartsView(TemplateView):
     template_name = 'wetterdaten/ptchart.html'
     list_t = None
@@ -76,10 +87,7 @@ class WetterdatenChartsView(TemplateView):
         context.update({'form': form})
         if fig is not None:
             try:
-                buf = BytesIO()
-                fig.savefig(buf, format='png')
-                image_base64 = base64.b64encode(buf.getvalue()).decode('utf-8').replace('\n', '')
-                buf.close()
+                image_base64 = create_image_base64(fig)
                 context.update({'image_base64_1': image_base64})
                 context.update({'data': 'has_data'})
             except Exception as ex:
@@ -104,10 +112,7 @@ class WetterdatenChartsView(TemplateView):
             context = super(WetterdatenChartsView, self).get_context_data(**kwargs)
             if fig is not None:
                 try:
-                    buf = BytesIO()
-                    fig.savefig(buf, format='png')
-                    image_base64 = base64.b64encode(buf.getvalue()).decode('utf-8').replace('\n', '')
-                    buf.close()
+                    image_base64 = create_image_base64(fig)
                     context.update({'image_base64_1': image_base64})
                     context.update({'data': 'has_data'})
                 except Exception as ex:
