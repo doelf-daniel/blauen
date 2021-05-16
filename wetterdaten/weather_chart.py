@@ -18,7 +18,10 @@ def create_dataframe(dt_begin, dt_end):
     # dataframe = query_set.to_dataframe(['t', 'p', 'h'], index='datumzeit')
     dataframe = read_frame(query_set)
 
-    dataframe = dataframe.tz_convert("Europe/Zurich")
+    # create datetime index passing the datetime series
+
+    # tz_convert  --> timezone
+    # todo  dataframe = dataframe.tz_convert("Europe/Zurich")
     try:
         resample = dataframe.resample('H').mean()
     except Exception as ex:

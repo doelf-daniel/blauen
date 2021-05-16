@@ -25,5 +25,3 @@ def create_some_wetterdaten_records():
     dt = dt + timedelta(hours=1)
     wd = Wetterdaten(datumzeit=dt, t=26.2, p=880, h=85.3, dir=3.87, v=0)
     wd.save()
-
-

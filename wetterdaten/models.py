@@ -8,7 +8,7 @@ from config.settings.common import TZ
 
 class Wetterdaten(models.Model):
     id = AutoField(primary_key=True)
-    datumzeit = models.DateTimeField(null=True)
+    datumzeit = models.DateTimeField(null=True, db_index=True, )
     t = models.FloatField()
     p = models.FloatField()
     h = models.FloatField(null=True)
