@@ -194,9 +194,10 @@ class WetterDatenListeTag(TemplateView):
                 datumzeit__gte=dt_begin_utc, datumzeit__lt=dt_end_utc).order_by('-datumzeit')
             context.update({'form': form})
             context.update({'errors': ''})
-            context.update({'actual_date': messwerte.date})
-            context.update({'has_data': messwerte.count() > 0})
-            context.update({'messwerte': messwerte})
+            if messwerte:
+                context.update({'actual_date': messwerte.date})
+                context.update({'has_data': messwerte.count() > 0})
+                context.update({'messwerte': messwerte})
         except Exception as ex:
             logger.error("get data form database failed", ex)
 
