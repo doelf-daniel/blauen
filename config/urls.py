@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.conf.urls import include, url
+from django.conf.urls import include
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
@@ -35,8 +35,3 @@ if settings.DEBUG:
                           re_path(r'^__debug__/', include(debug_toolbar.urls)),
                       ] + urlpatterns
 
-# if 'imprint' in settings.INSTALLED_APPS:
-#     from imprint.views import AboutView
-#     urlpatterns += [
-#         url(r'^about/$', AboutView.as_view(), name='about'),
-#     ]

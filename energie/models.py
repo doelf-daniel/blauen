@@ -1,4 +1,5 @@
 from django.db import models, connection
+from django.db.models import AutoField
 
 
 class SmartMeter(models.Model):
@@ -10,6 +11,7 @@ class SmartMeter(models.Model):
         Phasendifferenz                         phi
 
     """
+    id = AutoField(primary_key=True)
     dt = models.DateTimeField(null=True, db_index=True)
     active_power_p = models.FloatField(null=False, default=0.0)
     active_power_m = models.FloatField(null=False, default=0.0)

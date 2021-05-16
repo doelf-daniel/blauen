@@ -55,7 +55,7 @@ def create_some_further_records():
 
 @pytest.mark.django_db(transaction=True)
 def test_create_energy_set_per_day_0():
-    dt = date(2020, 4, 1)
+    dt = datetime(2020, 4, 1)
     result = create_energy_set_per_day(dt)
     assert result
     assert 0.0 == result.production

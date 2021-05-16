@@ -4,6 +4,8 @@ import os
 from datetime import datetime, timedelta, date
 from io import BytesIO
 
+import matplotlib.pyplot as plt
+import pytz
 from django.conf import settings
 from django.utils import timezone
 from django.views.generic import TemplateView, DetailView
@@ -14,8 +16,6 @@ from common.models import (DAUER_WOCHE)
 from config.settings.common import TZ
 from .forms import SelectForm, SelectDateForm
 from .models import Wetterdaten
-import matplotlib.pyplot as plt
-import pytz
 
 register_matplotlib_converters()
 
@@ -47,7 +47,6 @@ class WetterdatenChartsView(TemplateView):
         self.list_h = []
         self.list_dt = []
         query_set = Wetterdaten.data_from_time_period(dt_begin_utc, dt_end_utc)
-
 
         for item in query_set:
             self.list_t.append(item.t)

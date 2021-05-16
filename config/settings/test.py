@@ -10,7 +10,7 @@ from .common import *  # noqa
 # DEBUG
 # ------------------------------------------------------------------------------
 # Turn debug off so tests run faster
-DEBUG = False
+DEBUG = True
 TEMPLATES[0]['OPTIONS']['debug'] = False
 
 # In-memory email backend stores messages in django.core.mail.outbox
@@ -29,7 +29,7 @@ CACHES = {
 
 # TESTING
 # ------------------------------------------------------------------------------
-TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+# TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 # PASSWORD HASHING
 # ------------------------------------------------------------------------------

@@ -6,6 +6,7 @@ from wetterdaten.models import Wetterdaten
 
 logger = logging.getLogger(__name__)
 
+
 class WetterdatenSerializer(serializers.ModelSerializer):
     class Meta:
         model = Wetterdaten

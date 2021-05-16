@@ -1,8 +1,8 @@
 import logging
-from datetime import date, datetime
 
 import matplotlib.pyplot as plt
 from django.utils import timezone
+from django_pandas.io import read_frame
 from matplotlib.dates import (ConciseDateFormatter, AutoDateLocator)
 from pandas.plotting import register_matplotlib_converters
 
@@ -15,7 +15,9 @@ logger = logging.getLogger(__name__)
 
 def create_dataframe(dt_begin, dt_end):
     query_set = Wetterdaten.data_from_time_period(dt_begin, dt_end)
-    dataframe = query_set.to_dataframe(['t', 'p', 'h'], index='datumzeit')
+    # dataframe = query_set.to_dataframe(['t', 'p', 'h'], index='datumzeit')
+    dataframe = read_frame(query_set)
+
     dataframe = dataframe.tz_convert("Europe/Zurich")
     try:
         resample = dataframe.resample('H').mean()
@@ -66,7 +68,6 @@ def temperature_chart(dt_begin, dt_end):
         return None
 
 
-
 def pressure_chart(dt_begin, dt_end):
     dt_begin = dt_begin.astimezone(tz=timezone.utc)
     dt_end = dt_end.astimezone(tz=timezone.utc)
@@ -106,5 +107,3 @@ def pressure_chart(dt_begin, dt_end):
         return fig
     else:
         return None
-
-

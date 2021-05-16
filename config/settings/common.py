@@ -32,7 +32,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # APP CONFIGURATION
 # ------------------------------------------------------------------------------
-DJANGO_APPS = (
+INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -45,23 +45,15 @@ DJANGO_APPS = (
     'rest_framework',
     'rest_framework.authtoken',
     # 'django_filters',
-)
-
-THIRD_PARTY_APPS = (
     # 'crispy_forms',
     # 'googlecharts',
-)
-
-# Apps specific for this project go here.
-LOCAL_APPS = (
     'common',
     'energie',
     'wetterdaten',
     'first',
+
 )
 
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 # MIDDLEWARE CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -344,3 +336,5 @@ LOGGING = {
         }
     }
 }
+
+

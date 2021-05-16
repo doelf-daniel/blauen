@@ -1,19 +1,19 @@
 from datetime import datetime
 
 from django.db import models
-from django_pandas.managers import DataFrameManager
+from django.db.models import AutoField
 
 from config.settings.common import TZ
 
 
 class Wetterdaten(models.Model):
+    id = AutoField(primary_key=True)
     datumzeit = models.DateTimeField(null=True)
     t = models.FloatField()
     p = models.FloatField()
     h = models.FloatField(null=True)
     dir = models.FloatField(null=True)
     v = models.FloatField(null=True)
-
 
     class Meta:
         ordering = ['datumzeit']
