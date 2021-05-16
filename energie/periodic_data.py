@@ -18,6 +18,8 @@ class PeriodicData:
             self.rr = month_list(dt0, dt1)
         elif period == TABLE_PERIOD_ACTUAL_YEAR:
             pass
+        else:
+            self.rr = day_list(dt0, dt1)
         self.sm_list = list()
         self.make_db_query()
 

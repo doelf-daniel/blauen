@@ -74,7 +74,6 @@ class SelectFormMesswerte(forms.Form):
                                                                       format='%d.%m.%Y'))
 
 
-
 class DtForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
