@@ -72,18 +72,7 @@ class SelectFormMesswerte(forms.Form):
                                                input_formats=['%d.%m.%Y', ],
                                                widget=forms.DateInput(attrs={'class': 'datePicker'},
                                                                       format='%d.%m.%Y'))
-        # self.fields['end'] = forms.DateField(label='bis', required=True,
-        #                                      input_formats=['%d.%m.%Y', ],
-        #                                      widget=forms.DateInput(attrs={'class': 'datePicker'},
-        #                                                             format='%d.%m.%Y'))
 
-    # def clean(self):
-    #     cleaned_data = super().clean()
-    #     temp_date_end = cleaned_data['end']
-    #     temp_date_begin = cleaned_data['begin']
-    #     if temp_date_begin > temp_date_end:
-    #         raise forms.ValidationError("Beginn muss vor dem Ende sein!", code='invalid')
-    #     return cleaned_data
 
 
 class DtForm(forms.Form):
