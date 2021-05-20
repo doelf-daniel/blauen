@@ -121,7 +121,7 @@ def dec_format(number, num_of_decimals=1):
     if number is None or number == '':
         return ''
     elif isinstance(number, float):
-        res = sep(number, num_of_decimals, thou="'", dec=".")
+        res = sep(number, num_of_decimals)
         return res
     else:
         return ''

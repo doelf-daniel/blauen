@@ -1,12 +1,14 @@
 .container {
   display: grid;
   grid-template-columns: 1fr;
-  justify-items: center; }
+  justify-items: center;
+}
 
 .item {
   padding: 5px;
   display: grid;
-  justify-items: center; }
+  justify-items: center;
+}
 
 .dataTable {
   border-collapse: collapse;
@@ -17,42 +19,63 @@
   font: 20px "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif, serif;
   padding: 0;
   box-shadow: 1px 1px 3px 1px #6E6D6D;
-  table-layout: fixed; }
-  .dataTable th {
-    color: #FFFFFF;
-    background: #304999;
-    font-weight: bold;
-    padding-left: 1.0rem;
-    padding-right: 1.0rem;
-    text-align: center;
-    vertical-align: top; }
-  .dataTable .th2 {
-    background: rgba(40, 68, 157, 0.8); }
-  .dataTable tr {
-    color: #000000;
-    font-weight: normal;
-    background: #bbccFF; }
-    .dataTable tr td {
-      font-size: 0.8em;
-      padding: 0.5em 0.6em;
-      text-align: left;
-      vertical-align: top;
-      border-style: solid;
-      border-width: 1px;
-      border-color: #bbb;
-      margin-left: 1.0rem;
-      margin-right: 1.0rem; }
-    .dataTable tr .column-centered {
-      text-align: center; }
-    .dataTable tr .column-rightadjusted {
-      text-align: right; }
-  .dataTable tr:nth-child(odd) td {
-    background: rgba(187, 204, 255, 0.1); }
-  .dataTable tr:nth-child(odd):hover td {
-    background: #96aac8; }
-  .dataTable tr:nth-child(even) td {
-    background: #f8f8f8; }
-  .dataTable tr:nth-child(even):hover td {
-    background: yellow; }
+  table-layout: fixed;
+}
+
+.dataTable th {
+  color: #FFFFFF;
+  background: #304999;
+  font-weight: bold;
+  padding-left: 1.0rem;
+  padding-right: 1.0rem;
+  text-align: center;
+  vertical-align: top;
+}
+
+.dataTable .th2 {
+  background: rgba(40, 68, 157, 0.8);
+}
+
+.dataTable tr {
+  color: #000000;
+  font-weight: normal;
+  background: #bbccFF;
+}
+
+.dataTable tr td {
+  font-size: 0.8em;
+  padding: 0.5em 0.6em;
+  text-align: left;
+  vertical-align: top;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #bbb;
+  margin-left: 1.0rem;
+  margin-right: 1.0rem;
+}
+
+.dataTable tr .column-centered {
+  text-align: center;
+}
+
+.dataTable tr .column-rightadjusted {
+  text-align: right;
+}
+
+.dataTable tr:nth-child(odd) td {
+  background: rgba(187, 204, 255, 0.1);
+}
+
+.dataTable tr:nth-child(odd):hover td {
+  background: #96aac8;
+}
+
+.dataTable tr:nth-child(even) td {
+  background: #f8f8f8;
+}
+
+.dataTable tr:nth-child(even):hover td {
+  background: yellow;
+}
 
 /*# sourceMappingURL=pv.css.map */

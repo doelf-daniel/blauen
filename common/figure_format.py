@@ -35,7 +35,6 @@ def sep(s, num_of_decimals=2, thou="'", dec="."):
         if len(decimal) < num_of_decimals:
             for i in range(num_of_decimals - len(decimal)):
                 decimal += '0'
-
         return integer + dec + decimal
     else:
         logger.error("wrong data type, value = {}".format(s))

@@ -12,9 +12,9 @@ def begin_of_week_with_date(dt_begin):
 def begin_month_before(dt_ref):
     month = dt_ref.month
     if month == 1:
-        dt = datetime(dt_ref.year - 1, 12, 1, 0, tzinfo=TZ)
+        dt = datetime(dt_ref.year - 1, 12, 1, tzinfo=TZ)
     else:
-        dt = datetime(dt_ref.year, dt_ref.month, 1, 0, tzinfo=TZ)
+        dt = datetime(dt_ref.year, dt_ref.month, 1, tzinfo=TZ)
     return dt
 
 

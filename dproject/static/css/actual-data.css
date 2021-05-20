@@ -1,15 +1,19 @@
 td {
-  padding: 5px; }
+  padding: 5px;
+}
 
 .column-centered {
-  text-align: center; }
+  text-align: center;
+}
 
 .column-rightadjusted {
   text-align: right;
-  padding-left: 2.0rem; }
+  padding-left: 2.0rem;
+}
 
 .tab-title {
   font-size: 150%;
-  font-width: bold; }
+  font-width: bold;
+}
 
 /*# sourceMappingURL=actual-data.css.map */

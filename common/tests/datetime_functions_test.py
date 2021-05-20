@@ -6,43 +6,43 @@ from config.settings.common import TZ
 
 
 def test_begin_actual_week_0():
-    dt_begin = datetime(2020, 5, 11, 0, tzinfo=TZ)
+    dt_begin = datetime(2020, 5, 11, tzinfo=TZ)
     res = begin_of_week_with_date(dt_begin)
     assert res == dt_begin
 
 
 def test_begin_actual_week_1():
-    dt_begin = datetime(2020, 5, 14, 0, tzinfo=TZ)
+    dt_begin = datetime(2020, 5, 14, tzinfo=TZ)
     res = begin_of_week_with_date(dt_begin)
-    assert datetime(2020, 5, 11, 0, tzinfo=TZ) == res
+    assert datetime(2020, 5, 11, tzinfo=TZ) == res
 
 
 def test_begin_actual_week_7():
-    dt_begin = datetime(2020, 5, 17, 0, tzinfo=TZ)
+    dt_begin = datetime(2020, 5, 17, tzinfo=TZ)
     res = begin_of_week_with_date(dt_begin)
-    assert datetime(2020, 5, 11, 0, tzinfo=TZ) == res
+    assert datetime(2020, 5, 11, tzinfo=TZ) == res
 
 
 def test_begin_actual_month_0():
-    dt_begin = datetime(2020, 5, 17, 0, tzinfo=TZ)
+    dt_begin = datetime(2020, 5, 17, tzinfo=TZ)
     res = begin_of_month_with_date(dt_begin)
     assert datetime(2020, 5, 1, tzinfo=TZ) == res
 
 
 def test_begin_actual_month_1():
-    dt_begin = datetime(2020, 5, 1, 0, tzinfo=TZ)
+    dt_begin = datetime(2020, 5, 1, tzinfo=TZ)
     res = begin_of_month_with_date(dt_begin)
     assert datetime(2020, 5, 1, tzinfo=TZ) == res
 
 
 def test_begin_actual_month_2():
-    dt_begin = datetime(2020, 5, 31, 0, tzinfo=TZ)
+    dt_begin = datetime(2020, 5, 31, tzinfo=TZ)
     res = begin_of_month_with_date(dt_begin)
     assert datetime(2020, 5, 1, tzinfo=TZ) == res
 
 
 def test_begin_month_actual():
-    dt_ref = datetime(2020, 5, 17, 0, tzinfo=TZ)
+    dt_ref = datetime(2020, 5, 17, tzinfo=TZ)
     dt0 = begin_of_month_with_date(dt_ref)
     assert dt0 == datetime(2020, 5, 1, tzinfo=TZ)
 

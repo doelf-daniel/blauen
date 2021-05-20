@@ -14,7 +14,7 @@ def create_energy_set_per_day(dt: datetime):
     :return:    Objekt der Klasse EnrgieSet mit den Tagesdaten
     """
     if isinstance(dt, date):
-        dt = datetime(dt.year, dt.month, dt.day, 0, tzinfo=TZ)
+        dt = datetime(dt.year, dt.month, dt.day, tzinfo=TZ)
     dt_begin = dt - timedelta(days=1)
     dt_end = dt
     return create_energy_cons_prod_period(dt_begin, dt_end)
@@ -44,10 +44,10 @@ def create_energy_cons_prod_period(dt_begin: datetime, dt_end: datetime) -> Ener
     if sm1 and sm2:
         cons = sm2.active_energy_p - sm1.active_energy_p
         prod = sm2.active_energy_m - sm1.active_energy_m
-        result = EnergieSet(descriptor=TABLE_PERIOD_DAYS, consumption=cons, production=prod,
+        result = EnergieSet(descriptor=TABLE_PERIOD_DAYS,
                             date_from=dt_from, date_to=dt_to)
     else:
-        result = EnergieSet(descriptor=TABLE_PERIOD_DAYS, consumption=0.0, production=0.0,
+        result = EnergieSet(descriptor=TABLE_PERIOD_DAYS,
                             date_from=dt_from, date_to=dt_to)
     return result
 
@@ -60,7 +60,7 @@ def create_energy_set_per_week(actual_date, week=1):
     :return:             EnergieSet Objekt mit den entsprechenden Daten
     """
     if isinstance(actual_date, date):
-        actual_date = datetime(actual_date.year, actual_date.month, actual_date.day, 0, 0, 0, tzinfo=TZ)
+        actual_date = datetime(actual_date.year, actual_date.month, actual_date.day, tzinfo=TZ)
     begin_actual_week = actual_date - timedelta(days=actual_date.weekday())
     date_to = begin_actual_week - timedelta(7 * (week - 1))
     date_from = begin_actual_week - timedelta(days=7 * week)
@@ -71,8 +71,8 @@ def create_energy_set_per_week(actual_date, week=1):
 
 def create_energy_set_actual_year(actual_date: datetime) -> EnergieSet:
     if isinstance(actual_date, date):
-        actual_date = datetime(actual_date.year, actual_date.month, actual_date.day, 0, 0, 0, tzinfo=TZ)
-    dt_begin = datetime(actual_date.year, 1, 1, 0, 0, 0, tzinfo=TZ)
+        actual_date = datetime(actual_date.year, actual_date.month, actual_date.day, tzinfo=TZ)
+    dt_begin = datetime(actual_date.year, 1, 1, tzinfo=TZ)
     qs0 = SmartMeter.objects.filter(dt__gte=dt_begin).order_by('dt')[:1]
     if len(qs0) > 0:
         smart_meter_0 = qs0[0]

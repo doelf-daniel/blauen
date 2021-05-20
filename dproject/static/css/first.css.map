@@ -1,1 +1,10 @@
-{"version":3,"sourceRoot":"","sources":["../scss/first.scss"],"names":[],"mappings":"AACA;EACE;EACA;EACA;;;AAIF;EACE;EACA;;;AAGF;EACE;EACA;EACA;;;AAGF;EACE;EACA;;;AAIA;EACE;EACA;;AAGF;EACE;;AAGF;EACE;;;AAIJ;EACE;IACE","file":"first.css"}
+{
+  "version": 3,
+  "sourceRoot": "",
+  "sources": [
+    "../scss/first.scss"
+  ],
+  "names": [],
+  "mappings": "AACA;EACE;EACA;EACA;;;AAIF;EACE;EACA;;;AAGF;EACE;EACA;EACA;;;AAGF;EACE;EACA;;;AAIA;EACE;EACA;;AAGF;EACE;;AAGF;EACE;;;AAIJ;EACE;IACE",
+  "file": "first.css"
+}

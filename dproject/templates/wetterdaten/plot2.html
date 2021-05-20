@@ -15,16 +15,16 @@
     <div class="row d-flex justify-content-center">
       <div class="row d-flex justify-content-center">
         <form action="" method="post">
-            {% csrf_token %}
+          {% csrf_token %}
           <div>
             <label class="label1" for="{{ form.dauer.id_for_label }}">Dauer</label>
-              {{ form.dauer }}
+            {{ form.dauer }}
           </div>
           <div>
             <label class="label1" for="{{ form.beginn.id_for_label }}">von</label>
-              {{ form.beginn }}
+            {{ form.beginn }}
             <label class="label2" for="{{ form.ende.id_for_label }}">bis</label>
-              {{ form.ende }}
+            {{ form.ende }}
           </div>
           <div>
             <label class="label3">&nbsp;</label>
@@ -36,16 +36,16 @@
   </div>
 
   <div class="row text-center">
-      {% if data == 'has no data' %}
-        <h3 class="warning" style="margin-top: 5.0em; margin-bottom: 5.0em;margin-left: 3.0em;">
-          Keine Daten vorhanden.
-        </h3>
-      {% else %}
+    {% if data == 'has no data' %}
+      <h3 class="warning" style="margin-top: 5.0em; margin-bottom: 5.0em;margin-left: 3.0em;">
+        Keine Daten vorhanden.
+      </h3>
+    {% else %}
 
 
-        <img src="data:image/png;base64, {{ image_base64_1 }}" class="responsive" alt="chart"/>
+      <img src="data:image/png;base64, {{ image_base64_1 }}" class="responsive" alt="chart"/>
 
-      {% endif %}
+    {% endif %}
   </div>
 
 {% endblock %}
@@ -55,42 +55,42 @@
 
 
   <script>
-      /*
-       * Der Submit-Button ist nur sichtbar und aktiv, wenn in der Kombobox
-       * die Option Eingabe gewählt ist.
-       */
-      $(document).ready(function () {
-          var e = document.getElementById("id_dauer");
-          var text = e.options[e.selectedIndex].text;
-          var b = document.getElementById("submit-button");
-          console.log(text);
-          if (text === "Eingabe") {
-              b.disabled = false;
-              b.style.visibility = "visible";
-          } else {
-              b.disabled = true;
-              b.style.visibility = "hidden";
-          }
+    /*
+     * Der Submit-Button ist nur sichtbar und aktiv, wenn in der Kombobox
+     * die Option Eingabe gewählt ist.
+     */
+    $(document).ready(function () {
+      var e = document.getElementById("id_dauer");
+      var text = e.options[e.selectedIndex].text;
+      var b = document.getElementById("submit-button");
+      console.log(text);
+      if (text === "Eingabe") {
+        b.disabled = false;
+        b.style.visibility = "visible";
+      } else {
+        b.disabled = true;
+        b.style.visibility = "hidden";
+      }
 
-          $('#id_dauer').on('change', function () {
-              var e = document.getElementById("id_dauer");
-              var text = e.options[e.selectedIndex].text;
-              var b = document.getElementById("submit-button");
-              console.log(text);
-              if (text === "Eingabe") {
-                  b.disabled = false;
-                  b.style.visibility = "visible";
-                  console.log("button enabled");
-              } else {
-                  b.disabled = true;
-                  b.style.visibility = "hidden";
-                  console.log("button disabled");
-                  this.form.submit();
-              }
-          });
-
-
+      $('#id_dauer').on('change', function () {
+        var e = document.getElementById("id_dauer");
+        var text = e.options[e.selectedIndex].text;
+        var b = document.getElementById("submit-button");
+        console.log(text);
+        if (text === "Eingabe") {
+          b.disabled = false;
+          b.style.visibility = "visible";
+          console.log("button enabled");
+        } else {
+          b.disabled = true;
+          b.style.visibility = "hidden";
+          console.log("button disabled");
+          this.form.submit();
+        }
       });
+
+
+    });
 
 
   </script>

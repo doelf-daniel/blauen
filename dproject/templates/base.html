@@ -3,46 +3,46 @@
 
 <html lang="de">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{% block title %}blauen{% endblock %}</title>
-    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block title %}blauen{% endblock %}</title>
+  <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
 
-    <!-- CSS -->
-    <link href="{% static 'bootstrap4/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'fontawesome/css/all.min.css' %}" rel="stylesheet">
+  <!-- CSS -->
+  <link href="{% static 'bootstrap4/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'fontawesome/css/all.min.css' %}" rel="stylesheet">
 
-    <!-- Project specific CSS -->
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
-    {% block css %}{% endblock %}
+  <!-- Project specific CSS -->
+  <link href="{% static 'css/project.css' %}" rel="stylesheet">
+  {% block css %}{% endblock %}
 </head>
 
 <body class="d-flex flex-column">
 
 <div class="main-container">
-    <header class="box1" style="min-height: 3.5em;">
-        {% include "menu.html" %}
-    </header>
+  <header class="box1" style="min-height: 3.5em;">
+    {% include "menu.html" %}
+  </header>
 
-    <main role="main" id="page-content" class="content">
-        {% if messages %}
-            <div class="container">
-                {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-                {% endfor %}
-            </div>
-        {% endif %}
+  <main role="main" id="page-content" class="content">
+    {% if messages %}
+      <div class="container">
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
 
-        {% block content %}
-        {% endblock content %}
-    </main>
+    {% block content %}
+    {% endblock content %}
+  </main>
 
-    <footer class="box4">
-        <div class="container">
-            &nbsp;
-        </div>
-    </footer>
+  <footer class="box4">
+    <div class="container">
+      &nbsp;
+    </div>
+  </footer>
 </div>
 
 <!-- Third-party javascript libraries go here -->

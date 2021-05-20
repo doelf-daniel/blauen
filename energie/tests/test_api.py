@@ -6,7 +6,7 @@ import rest_framework
 from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework.test import APIRequestFactory, force_authenticate
-
+from rest_framework.exceptions import ErrorDetail
 from energie.api.serializers import SmartMeterDatenSerializer
 from energie.api.views import SmartMeterList
 
@@ -66,7 +66,7 @@ def test_valid_serializer_none():
     serializer = SmartMeterDatenSerializer(data=dd)
     assert not serializer.is_valid()
     assert len(serializer.errors) > 0
-    assert type(serializer.errors['active_power_p'][0]) == rest_framework.exceptions.ErrorDetail
+    assert type(serializer.errors['active_power_p'][0]) == ErrorDetail
 
 
 def test_post_unauthorized():

@@ -1,12 +1,14 @@
 .container {
   display: grid;
   grid-template-columns: 1fr;
-  justify-items: center; }
+  justify-items: center;
+}
 
 .item {
   padding: 5px;
   display: grid;
-  justify-items: center; }
+  justify-items: center;
+}
 
 .dataTable {
   border-collapse: collapse;
@@ -17,47 +19,68 @@
   font: 18px Georgia, serif;
   padding: 0;
   box-shadow: 1px 1px 3px 1px #6E6D6D;
-  table-layout: fixed; }
-  .dataTable th {
-    color: #FFFFFF;
-    background: #304999;
-    font-weight: bold;
-    padding-left: 1.0rem;
-    padding-right: 1.0rem;
-    text-align: center;
-    vertical-align: top; }
-  .dataTable .th2 {
-    background: rgba(40, 68, 157, 0.8); }
-  .dataTable tr {
-    color: #000000;
-    font-weight: normal; }
-    .dataTable tr :hover td {
-      background: #0E1E61;
-      color: #FFFFFF; }
-    .dataTable tr tr:nth-child(odd) td {
-      background: #bbccFF; }
-    .dataTable tr tr:nth-child(odd):hover td {
-      background: #0E1E61; }
-    .dataTable tr td {
-      font-size: 0.8em;
-      background: #FFFFFF;
-      padding: 0.2em 0.6em;
-      text-align: left;
-      vertical-align: top;
-      border-style: solid;
-      border-width: 1px;
-      border-color: #bbb;
-      margin-left: 1.0rem;
-      margin-right: 1.0rem; }
-    .dataTable tr .column-centered {
-      text-align: center; }
-    .dataTable tr .column-rightadjusted {
-      text-align: right; }
+  table-layout: fixed;
+}
+
+.dataTable th {
+  color: #FFFFFF;
+  background: #304999;
+  font-weight: bold;
+  padding-left: 1.0rem;
+  padding-right: 1.0rem;
+  text-align: center;
+  vertical-align: top;
+}
+
+.dataTable .th2 {
+  background: rgba(40, 68, 157, 0.8);
+}
+
+.dataTable tr {
+  color: #000000;
+  font-weight: normal;
+}
+
+.dataTable tr :hover td {
+  background: #0E1E61;
+  color: #FFFFFF;
+}
+
+.dataTable tr tr:nth-child(odd) td {
+  background: #bbccFF;
+}
+
+.dataTable tr tr:nth-child(odd):hover td {
+  background: #0E1E61;
+}
+
+.dataTable tr td {
+  font-size: 0.8em;
+  background: #FFFFFF;
+  padding: 0.2em 0.6em;
+  text-align: left;
+  vertical-align: top;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #bbb;
+  margin-left: 1.0rem;
+  margin-right: 1.0rem;
+}
+
+.dataTable tr .column-centered {
+  text-align: center;
+}
+
+.dataTable tr .column-rightadjusted {
+  text-align: right;
+}
 
 .hidden_col {
-  display: none; }
+  display: none;
+}
 
 .table-bordered {
-  border: 1px solid #eceeef; }
+  border: 1px solid #eceeef;
+}
 
 /*# sourceMappingURL=messwerte.css.map */

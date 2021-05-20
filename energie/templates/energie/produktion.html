@@ -4,38 +4,38 @@
 {% block title %}Aktuelle Produktion{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1>Produktion</h1>
-                <div style="=width: 100%;">
-                    <div class="row d-flex justify-content-center">
-                        <div style="display: inline-block">
-                            <form action="" method="post">
-                                {% csrf_token %}
-                                <div class="chart-form-div">
-                                    <label class="label1" for="{{ form.dauer.id_for_label }}">Dauer</label>
-                                    {{ form.dauer }}
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Produktion</h1>
+        <div style="=width: 100%;">
+          <div class="row d-flex justify-content-center">
+            <div style="display: inline-block">
+              <form action="" method="post">
+                {% csrf_token %}
+                <div class="chart-form-div">
+                  <label class="label1" for="{{ form.dauer.id_for_label }}">Dauer</label>
+                  {{ form.dauer }}
 
-                                    <label class="label2" for="{{ form.ende.id_for_label }}">bis</label>
-                                    {{ form.ende }}
-                                    <input class="btn2" id="submit-button" class="btn btn-info" type="submit"
-                                           value="...">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                  <label class="label2" for="{{ form.ende.id_for_label }}">bis</label>
+                  {{ form.ende }}
+                  <input class="btn2" id="submit-button" class="btn btn-info" type="submit"
+                         value="...">
                 </div>
+              </form>
             </div>
-            <div class="row text-center">
-                {% if data == 'has no data' %}
-                    <h3 class="warning" style="margin-top: 5.0em; margin-bottom: 5.0em;margin-left: 3.0em;">
-                        Keine Daten vorhanden.
-                    </h3>
-                {% else %}
-                    <img src="data:image/png;base64, {{ image_base64_1 }}" class="responsive" alt="chart"/>
-                {% endif %}
-            </div>
+          </div>
         </div>
+      </div>
+      <div class="row text-center">
+        {% if data == 'has no data' %}
+          <h3 class="warning" style="margin-top: 5.0em; margin-bottom: 5.0em;margin-left: 3.0em;">
+            Keine Daten vorhanden.
+          </h3>
+        {% else %}
+          <img src="data:image/png;base64, {{ image_base64_1 }}" class="responsive" alt="chart"/>
+        {% endif %}
+      </div>
     </div>
+  </div>
 {% endblock %}

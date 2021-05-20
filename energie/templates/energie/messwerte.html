@@ -4,89 +4,89 @@
 
 
 {% block css %}
-    <link href="{% static 'css/datepicker1.css' %}" rel="stylesheet">
-    <link href="{% static 'css/messwerte.css' %}" rel="stylesheet">
+  <link href="{% static 'css/datepicker1.css' %}" rel="stylesheet">
+  <link href="{% static 'css/messwerte.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block title %}Zählerdaten{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="item">
+  <div class="container">
+    <div class="item">
 
-            <h2 class="item">{{ title }}</h2>
+      <h2 class="item">{{ title }}</h2>
 
-            <div class="item">
-                <form action="" method="post">
-                    {% csrf_token %}
-                    <div class="chart-form-div">
-                        <label class="label1" for="{{ form.begin.id_for_label }}">von</label>
-                        {{ form.begin }}
-                        <input id="submit-button" class="button" type="submit" value="...">
-                    </div>
-                </form>
-            </div>
+      <div class="item">
+        <form action="" method="post">
+          {% csrf_token %}
+          <div class="chart-form-div">
+            <label class="label1" for="{{ form.begin.id_for_label }}">von</label>
+            {{ form.begin }}
+            <input id="submit-button" class="button" type="submit" value="...">
+          </div>
+        </form>
+      </div>
 
-        </div>
-        <div class="item">
-            {% if errors %}
-                <div>
-                    {{ errors }}
-                </div>
-            {% endif %}
-        </div>
-        <div class="item">
-            {% if messwerte %}
-                <table class="dataTable table-bordered">
-                    <thead>
-                    <tr>
-                        <th colspan="2"></th>
-                        <th colspan="2" class="th2">Leistung [kW]</th>
-                        <th colspan="3">Energie [kWh]</th>
-                    </tr>
-                    <tr>
-                        <th>Datum</th>
-                        <th>Zeit</th>
-                        <th class="th2">Produktion</th>
-                        <th class="th2">Verbrauch</th>
-                        <th>Produktion</th>
-                        <th>Verbrauch</th>
-                        <th>Differenz</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for item in messwerte %}
-                        <tr>
-                            {% localtime on %}
-                                {% localtime on %}
-                                    <td>{{ item.dt|date:"d.m.Y" }}</td>
-                                    <td>{{ item.dt|date:"H:i" }}</td>
-                                {% endlocaltime %}
-                            {% endlocaltime %}
-                            <td class="column-rightadjusted">{{ item.active_power_m|dec_format:3 }}</td>
-                            <td class="column-rightadjusted">{{ item.active_power_p|dec_format:3 }}</td>
-                            <td class="column-rightadjusted">{{ item.active_energy_m|dec_format }}</td>
-                            <td class="column-rightadjusted">{{ item.active_energy_p|dec_format }}</td>
-                            <td class="column-rightadjusted">{{ item.active_energy_difference|dec_format }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <br/>
-                <h3>Keine entsprechenden Daten vorhanden!</h3>
-            {% endif %}
-        </div>
     </div>
+    <div class="item">
+      {% if errors %}
+        <div>
+          {{ errors }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="item">
+      {% if messwerte %}
+        <table class="dataTable table-bordered">
+          <thead>
+          <tr>
+            <th colspan="2"></th>
+            <th colspan="2" class="th2">Leistung [kW]</th>
+            <th colspan="3">Energie [kWh]</th>
+          </tr>
+          <tr>
+            <th>Datum</th>
+            <th>Zeit</th>
+            <th class="th2">Produktion</th>
+            <th class="th2">Verbrauch</th>
+            <th>Produktion</th>
+            <th>Verbrauch</th>
+            <th>Differenz</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for item in messwerte %}
+            <tr>
+              {% localtime on %}
+                {% localtime on %}
+                  <td>{{ item.dt|date:"d.m.Y" }}</td>
+                  <td>{{ item.dt|date:"H:i" }}</td>
+                {% endlocaltime %}
+              {% endlocaltime %}
+              <td class="column-rightadjusted">{{ item.active_power_m|dec_format:3 }}</td>
+              <td class="column-rightadjusted">{{ item.active_power_p|dec_format:3 }}</td>
+              <td class="column-rightadjusted">{{ item.active_energy_m|dec_format }}</td>
+              <td class="column-rightadjusted">{{ item.active_energy_p|dec_format }}</td>
+              <td class="column-rightadjusted">{{ item.active_energy_difference|dec_format }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <br/>
+        <h3>Keine entsprechenden Daten vorhanden!</h3>
+      {% endif %}
+    </div>
+  </div>
 
 {% endblock %}
 
 {% block javascript %}
-    <script src="{% static 'js/datepicker.js' %}"></script>
-    <script src="{% static 'js/datepicker-de.js' %}"></script>
-    <script>
-        jQuery(function () {
-            jQuery(".datePicker").datepicker();
-        });
-    </script>
+  <script src="{% static 'js/datepicker.js' %}"></script>
+  <script src="{% static 'js/datepicker-de.js' %}"></script>
+  <script>
+    jQuery(function () {
+      jQuery(".datePicker").datepicker();
+    });
+  </script>
 {% endblock javascript %}

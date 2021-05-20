@@ -1,36 +1,36 @@
 .content-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
 }
 
 .item {
-    border: blue solid 2px;
-    padding: 10px;
+  border: blue solid 2px;
+  padding: 10px;
 }
 
 .responsive {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 
 .em-table td {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .em-table .right-align {
-    text-align: right;
+  text-align: right;
 }
 
 .em-table .center {
-    text-align: center;
+  text-align: center;
 }
 
 @media only screen and (min-width: 720px) {
-    .content-container {
-        grid-template-columns: 1fr 1fr;
-    }
+  .content-container {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /*# sourceMappingURL=first.css.map */

@@ -2,96 +2,96 @@
 {% load static common_tags %}
 
 {% block css %}
-    <link href="{% static 'css/actual-data.css' %}" rel="stylesheet">
+  <link href="{% static 'css/actual-data.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block title %}aktuelle Daten{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1>Aktuelle Daten</h1>
-                <p>Die Daten vom Zähler werden ca alle 2 Minuten aufdatiert.</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Aktuelle Daten</h1>
+        <p>Die Daten vom Zähler werden ca alle 2 Minuten aufdatiert.</p>
 
-                <table>
-                    <tr>
-                        <td colspan="3" class="tab-title">Datum/Zeit</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td colspan="2"><span id="datum_zeit"></span></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" class="tab-title">Leistung</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        <td>Produktion</td>
-                        <td class="column-rightadjusted"><span id="active_power_m"></span></td>
-                        <td>kW</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>Verbrauch</td>
-                        <td class="column-rightadjusted"><span id="active_power_p"></span></td>
-                        <td>kW</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3" class="tab-title">Zählerstand</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>Produktion</td>
-                        <td class="column-rightadjusted"><span id="active_energy_p"></span></td>
-                        <td>kWh</td>
-                    <tr>
-                        <td></td>
-                        <td>Verbrauch</td>
-                        <td class="column-rightadjusted"><span id="active_energy_m"></span></td>
-                        <td>kWh</td>
-                    </tr>
-                </table>
+        <table>
+          <tr>
+            <td colspan="3" class="tab-title">Datum/Zeit</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="2"><span id="datum_zeit"></span></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="tab-title">Leistung</td>
+          </tr>
+          <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>Produktion</td>
+            <td class="column-rightadjusted"><span id="active_power_m"></span></td>
+            <td>kW</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Verbrauch</td>
+            <td class="column-rightadjusted"><span id="active_power_p"></span></td>
+            <td>kW</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="tab-title">Zählerstand</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Produktion</td>
+            <td class="column-rightadjusted"><span id="active_energy_p"></span></td>
+            <td>kWh</td>
+          <tr>
+            <td></td>
+            <td>Verbrauch</td>
+            <td class="column-rightadjusted"><span id="active_energy_m"></span></td>
+            <td>kWh</td>
+          </tr>
+        </table>
 
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 {% endblock %}
 
 {% block javascript %}
-    <script type="text/javascript">
-        let url = "{% url "energie:aktuelleDaten" %}";
+  <script type="text/javascript">
+    let url = "{% url "energie:aktuelleDaten" %}";
 
-        function updateFkt() {
-            $.ajax({
-                url: 'aktuelleDaten',
-                type: "GET",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                    // set data values
-                    document.getElementById("datum_zeit").innerText = data.datum_zeit;
-                    document.getElementById("active_power_m").innerText = data.active_power_m;
-                    document.getElementById("active_power_p").innerText = data.active_power_p;
-                    document.getElementById("active_energy_m").innerText = data.active_energy_m;
-                    document.getElementById("active_energy_p").innerText = data.active_energy_p;
-                    // alert("Success")
-                    // set timeout and call again
-                    setTimeout(updateFkt, 10000);
-                },
-                fail: function (data) {
-                    alert("Failed")
-                },
-            })
+    function updateFkt() {
+      $.ajax({
+        url: 'aktuelleDaten',
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+          // set data values
+          document.getElementById("datum_zeit").innerText = data.datum_zeit;
+          document.getElementById("active_power_m").innerText = data.active_power_m;
+          document.getElementById("active_power_p").innerText = data.active_power_p;
+          document.getElementById("active_energy_m").innerText = data.active_energy_m;
+          document.getElementById("active_energy_p").innerText = data.active_energy_p;
+          // alert("Success")
+          // set timeout and call again
+          setTimeout(updateFkt, 10000);
+        },
+        fail: function (data) {
+          alert("Failed")
+        },
+      })
 
-        }
+    }
 
-        $(document).ready(function () {
-            // document.getElementById("actButton").addEventListener("click", updateFkt);
-            setTimeout(updateFkt, 500);
-        });
+    $(document).ready(function () {
+      // document.getElementById("actButton").addEventListener("click", updateFkt);
+      setTimeout(updateFkt, 500);
+    });
 
 
-    </script>
+  </script>
 
 {% endblock javascript %}

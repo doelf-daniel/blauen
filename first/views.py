@@ -37,10 +37,10 @@ class FirstPage(TemplateView):
                 context.update({'image_base64_1': image_base64})
                 context.update({'data1': 'has_data'})
             except Exception as ex:
-                logger.warning("Bilddatei nicht gefunden!", ex)
+                logger.error("Bilddatei nicht gefunden!", ex)
         else:
             context.update({'data1': 'has no data'})
-            logger.warning("Bilddatei1 nicht gefunden!")
+            logger.error("Bilddatei1 nicht gefunden!")
         # Luftdruck Chart
         fig2 = pressure_chart(dt_begin, dt_end)
         if fig2 is not None:
@@ -53,10 +53,10 @@ class FirstPage(TemplateView):
                 context.update({'data2': 'has_data'})
             except Exception as ex:
                 context.update({'data2': 'has no data'})
-                logger.warning("Bilddatei2 nicht gefunden!", ex)
+                logger.error("Bilddatei2 nicht gefunden!", ex)
         else:
             context.update({'data2': 'has no data'})
-            logger.warning("Bilddatei1 nicht gefunden!")
+            logger.error("Bilddatei1 nicht gefunden!")
         # Strom Chart
         try:
             dt_begin = dt_end - timedelta(days=2)
@@ -73,7 +73,7 @@ class FirstPage(TemplateView):
                     context.update({'image_base64_3': image_base64})
                     context.update({'data3': 'has_data'})
                 except Exception as ex:
-                    logger.warning("Bilddatei nicht gefunden!", ex)
+                    logger.error("Bilddatei nicht gefunden!", ex)
             else:
                 context.update({'data3': 'has no data'})
         except Exception as ex:

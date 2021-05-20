@@ -24,9 +24,11 @@
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
+
 .em-table .right-align {
   text-align: right;
 }
+
 .em-table .center {
   text-align: center;
 }
