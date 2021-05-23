@@ -609,3 +609,58 @@ https://www.caktusgroup.com/blog/2018/10/18/filtering-and-pagination-django/
 
 Django Filtering System with django-filter - Filter Queryset (2018)
 https://github.com/TheDumbfounds/snippetproject-basic
+
+
+Datenbank im Docker-Container
+=============================
+
+Docker-Compose
+--------------
+
+::
+
+    # creates postgres sql database image and pgadmin4 image
+    # login db: postgres:postgres hostname: postgres
+    # login pgadmin: admin@admin.net:admin port 5555
+    ########################################################
+    version: '3.1'
+    services:
+      db:
+        image: postgres
+        container_name: postgres_blauen
+        ports:
+          - 33000:5432
+        environment:
+          POSTGRES_USER: doelf
+          POSTGRES_PASSWORD: rAC9sFBS
+          POSTGRES_DB: doelf_blauen
+        restart: unless-stopped
+        volumes:
+          - /home/doelf/databases/docker/postgresql_blauen:/var/lib/postgresql/data
+
+    volumes:
+        pgdata:
+
+
+Starten der Datenbank:
+
+Hat im Verzeichnis zu erfolgen, in dem sich das docker-compose.yml befindet:
+
+::
+
+    docker-compose run
+
+Daten für den Zugriff auf die Datenbank im Docker-Container:
+
+::
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'doelf_blauen',  #
+            'USER': 'doelf',
+            'PASSWORD': 'rAC9sFBS',
+            'HOST': 'localhost',
+            'PORT': '33000',  # Set to empty string for default.
+        }
+    }

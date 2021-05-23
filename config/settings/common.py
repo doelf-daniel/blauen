@@ -97,7 +97,7 @@ MANAGERS = ADMINS
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres://doelf@localhost/doelf_blauen'),
+    'default': env.db('DATABASE_URL', default='doelf://doelf@localhost:33000/doelf_blauen'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 if DATABASES['default']['ENGINE'] == 'django.db.backends.mysql':
