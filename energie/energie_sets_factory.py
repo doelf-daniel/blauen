@@ -45,6 +45,7 @@ def create_energy_cons_prod_period(dt_begin: datetime, dt_end: datetime) -> Ener
         cons = sm2.active_energy_p - sm1.active_energy_p
         prod = sm2.active_energy_m - sm1.active_energy_m
         result = EnergieSet(descriptor=TABLE_PERIOD_DAYS,
+                            consumption=cons, production=prod,
                             date_from=dt_from, date_to=dt_to)
     else:
         result = EnergieSet(descriptor=TABLE_PERIOD_DAYS,
@@ -74,8 +75,8 @@ def create_energy_set_actual_year(actual_date: datetime) -> EnergieSet:
         actual_date = datetime(actual_date.year, actual_date.month, actual_date.day, tzinfo=TZ)
     dt_begin = datetime(actual_date.year, 1, 1, tzinfo=TZ)
     qs0 = SmartMeter.objects.filter(dt__gte=dt_begin).order_by('dt')[:1]
-    if len(qs0) > 0:
-        smart_meter_0 = qs0[0]
+    if qs0:
+        smart_meter_0 = qs0.first()
         qs1 = SmartMeter.objects.filter(dt__lte=actual_date).order_by('-dt')[:1]
         smart_meter_1 = qs1[0]
         cons = smart_meter_1.active_energy_m - smart_meter_0.active_energy_m
