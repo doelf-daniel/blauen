@@ -168,6 +168,7 @@ class PvProduktionVerbrauch(TemplateView):
         try:
             periodic_data = PeriodicData(dt_begin, dt_end, TABLE_PERIOD_DAYS)
             object_list = periodic_data.get_energyset_list()
+            periodic_data = None
             context.update({'form': form})
             context.update({'erorrs': ''})
             context.update({'title': TABLE_PERIOD_DAYS})
@@ -190,6 +191,7 @@ class PvProduktionVerbrauch(TemplateView):
             dt2 = datetime(year=end_date.year, month=end_date.month,
                            day=end_date.day, tzinfo=TZ)
             dt_begin, dt_end = self.process_filter_data(dt1, dt2, period)
+            periodic_data = None
             try:
                 if period == TABLE_PERIOD_DAYS:
                     # Read data from database
@@ -211,11 +213,12 @@ class PvProduktionVerbrauch(TemplateView):
                 context.update({'form': form})
                 context.update({'title': period})
                 context.update({'object_list': object_list})
+                periodic_data = None
                 return self.render_to_response(context)
             except Exception as ex:
+                periodic_data = None
                 logger.error("Unexpected failure", ex)
                 db_error = ex.args[0]
-
         errors = list()
         if db_error:
             errors.append(db_error)

@@ -2,11 +2,11 @@ import json
 from copy import copy
 
 import pytest
-import rest_framework
 from django.contrib.auth.models import User
 from rest_framework import status
-from rest_framework.test import APIRequestFactory, force_authenticate
 from rest_framework.exceptions import ErrorDetail
+from rest_framework.test import APIRequestFactory, force_authenticate
+
 from energie.api.serializers import SmartMeterDatenSerializer
 from energie.api.views import SmartMeterList
 

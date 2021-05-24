@@ -41,7 +41,7 @@ def create_some_further_records():
     b1 = 2000
     dt0 = datetime(2020, 4, 3, tzinfo=TZ)
     for i in range(0, 40):
-        a1 = a1 + i
+        a1 += i
         b1 = b1 + 10 + i
 
         dt = dt0 + timedelta(days=i)
@@ -75,8 +75,17 @@ def test_create_energy_set_per_day_1(create_some_further_records):
 @pytest.mark.django_db(transaction=True)
 def test_create_energy_set_per_day_2(create_some_further_records):
     dt = datetime(2020, 4, 26, tzinfo=TZ)
-    # data = list(SmartMeter.objects.all())
     result = create_energy_set_per_week(dt, 1)
     assert result.consumption == 91
     assert result.production == 161
     assert result.descriptor == 'Wochendaten'
+
+
+@pytest.mark.django_db(transaction=True)
+def test_create_energy_set_per_day_3(create_some_further_records):
+    dt = datetime(2020, 4, 26, tzinfo=TZ)
+    try:
+        result = create_energy_set_per_week(dt, 0)
+        assert False
+    except ValueError:
+        assert True

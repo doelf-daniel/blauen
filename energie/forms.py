@@ -14,15 +14,18 @@ PROD_PERIODS = (
     (PROD_PERIOD_3, PROD_PERIOD_3)
 )
 
+
 TABLE_PERIOD_DAYS = "Tagesdaten"
 TABLE_PERIOD_WEEKS = "Wochendaten"
 TABLE_PERIOD_MONTHS = "Monatsdaten"
 TABLE_PERIOD_ACTUAL_YEAR = "aktuelles Jahr"
+TABLE_PERIOD_UNDEFINED = "undefined"
 TABLE_PERIODS = (
     (TABLE_PERIOD_DAYS, TABLE_PERIOD_DAYS),
     (TABLE_PERIOD_WEEKS, TABLE_PERIOD_WEEKS),
     (TABLE_PERIOD_MONTHS, TABLE_PERIOD_MONTHS),
-    (TABLE_PERIOD_ACTUAL_YEAR, TABLE_PERIOD_ACTUAL_YEAR)
+    (TABLE_PERIOD_ACTUAL_YEAR, TABLE_PERIOD_ACTUAL_YEAR),
+    (TABLE_PERIOD_UNDEFINED, TABLE_PERIOD_UNDEFINED)
 )
 
 
@@ -38,6 +41,8 @@ class SelectFormEnergieChart(forms.Form):
     def clean(self):
         cleaned_data = super().clean()
         temp_date = cleaned_data['ende']
+        if not isinstance(temp_date, datetime.date):
+            raise forms.ValidationError("ende is not a valid date or datetime", code='invalid')
         ende = datetime(temp_date.year, temp_date.month, temp_date.day, tzinfo=TZ)
         cleaned_data['ende'] = ende
         return cleaned_data

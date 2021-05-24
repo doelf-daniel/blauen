@@ -1,9 +1,12 @@
+import logging
 from datetime import datetime, timedelta
 
 from django import forms
 
 from common.models import *
 from config.settings.common import TZ
+
+logger = logging.getLogger(__name__)
 
 
 class SelectForm(forms.Form):
@@ -29,11 +32,13 @@ class SelectForm(forms.Form):
                 if beginn < ende:
                     return cleaned_data
                 else:
+                    logger.warning('Ungültige Selektion, Beginn kann nicht nach dem Ende sein.')
                     raise forms.ValidationError(
                         'Ungültige Selektion, Beginn kann nicht nach dem Ende sein.',
                         code='invalid selection'
                     )
             else:
+                logger.warning('Ungültige Selektion, Beginn und Ende sind einzugeben')
                 raise forms.ValidationError(
                     'Ungültige Selektion, Beginn und Ende sind einzugeben',
                     code='invalid selection'

@@ -8,12 +8,6 @@ logger = logging.getLogger(__name__)
 
 
 class SmartMeterDatenSerializer(serializers.ModelSerializer):
-    # def create(self, validated_data):
-    #     try:
-    #         super.create(validated_data)
-    #     except TypeError:
-    #         logger.error("Create SmartMeter object failed!")
-
     class Meta:
         model = SmartMeter
         fields = ('dt', 'active_power_p', 'active_power_m',

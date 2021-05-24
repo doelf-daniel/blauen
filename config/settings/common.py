@@ -325,7 +325,7 @@ LOGGING = {
         },
         'django.request': {
             'handlers': ['mail_admins'],
-            'level': 'ERROR',
+            'level': 'WARNING',
             'propagate': False,
         },
         'blauen.custom': {

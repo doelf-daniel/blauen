@@ -1,3 +1,4 @@
+import logging
 from datetime import date, timedelta, datetime
 
 from django.utils import timezone
@@ -5,6 +6,8 @@ from django.utils import timezone
 from config.settings.common import TZ
 from energie.forms import TABLE_PERIOD_DAYS, TABLE_PERIOD_WEEKS, TABLE_PERIOD_ACTUAL_YEAR
 from energie.models import SmartMeter, EnergieSet
+
+logger = logging.getLogger(__name__)
 
 
 def create_energy_set_per_day(dt: datetime):
@@ -60,6 +63,9 @@ def create_energy_set_per_week(actual_date, week=1):
     :param week:         Anzahl Wochen zurück von der Referenzwoche aus gesehen
     :return:             EnergieSet Objekt mit den entsprechenden Daten
     """
+    if week < 1 and actual_date:
+        logger.error("invalid parameters: week = {week}, actual_date = {actual_date}")
+        raise ValueError()
     if isinstance(actual_date, date):
         actual_date = datetime(actual_date.year, actual_date.month, actual_date.day, tzinfo=TZ)
     begin_actual_week = actual_date - timedelta(days=actual_date.weekday())
