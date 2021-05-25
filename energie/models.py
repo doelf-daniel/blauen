@@ -1,5 +1,8 @@
+import logging
 from django.db import models, connection
 from django.db.models import AutoField
+
+logger = logging.getLogger(__name__)
 
 
 class SmartMeter(models.Model):
@@ -131,4 +134,5 @@ class EnergieSet:
         if self.production is not None and self.consumption is not None:
             return self.production - self.consumption
         else:
+            logger.error("production or consumption figure is None")
             raise ValueError("One or more values are undefined!")

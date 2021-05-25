@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date
 
 from django import forms
 
@@ -41,7 +41,7 @@ class SelectFormEnergieChart(forms.Form):
     def clean(self):
         cleaned_data = super().clean()
         temp_date = cleaned_data['ende']
-        if not isinstance(temp_date, datetime.date):
+        if not isinstance(temp_date, date):
             raise forms.ValidationError("ende is not a valid date or datetime", code='invalid')
         ende = datetime(temp_date.year, temp_date.month, temp_date.day, tzinfo=TZ)
         cleaned_data['ende'] = ende

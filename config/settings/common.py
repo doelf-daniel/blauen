@@ -44,9 +44,6 @@ INSTALLED_APPS = (
     'environ',
     'rest_framework',
     'rest_framework.authtoken',
-    # 'django_filters',
-    # 'crispy_forms',
-    # 'googlecharts',
     'common',
     'energie',
     'wetterdaten',
@@ -291,13 +288,10 @@ LOGGING = {
         },
     },
     'handlers': {
-        'default': {
-            'level': 'DEBUG',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(ROOT_DIR, 'logs', 'blauen.log'),
-            'maxBytes': 1024 * 1024 * 5,
-            'backupCount': 5,
+        'console': {
+            'class': 'logging.StreamHandler',
             'formatter': 'simple',
+            'level': 'DEBUG',
         },
         'file': {
             'level': 'INFO',
@@ -313,9 +307,8 @@ LOGGING = {
         }
     },
     'loggers': {
-        # root logger
         '': {
-            'handlers': ['default', ],
+            'handlers': ['console', 'file', ],
             'level': 'INFO',
         },
         'django': {
@@ -324,9 +317,14 @@ LOGGING = {
             'level': 'INFO',
         },
         'django.request': {
-            'handlers': ['mail_admins'],
+            'handlers': ['file', 'mail_admins'],
             'level': 'WARNING',
             'propagate': False,
+        },
+        'django.security': {
+            'handlers': ['file', 'mail_admins'],
+            'level': 'WARNING',
+            'propagate': True,
         },
         'blauen.custom': {
             'handlers': ['file'],
