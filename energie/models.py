@@ -1,4 +1,5 @@
 import logging
+
 from django.db import models, connection
 from django.db.models import AutoField
 
@@ -16,20 +17,20 @@ class SmartMeter(models.Model):
     """
     id = AutoField(primary_key=True)
     dt = models.DateTimeField(null=True, db_index=True)
-    active_power_p = models.FloatField(null=False, default=0.0)
-    active_power_m = models.FloatField(null=False, default=0.0)
-    reactive_power_p = models.FloatField(null=False, default=0.0)
-    reactive_power_m = models.FloatField(null=False, default=0.0)
-    apparent_power_p = models.FloatField(null=False, default=0.0)
-    apparent_power_m = models.FloatField(null=False, default=0.0)
-    power_factor = models.FloatField(null=False, default=0.0)
-    supply_frequency = models.FloatField(null=False, default=0.0)
-    active_energy_p = models.FloatField(null=False, default=0.0)
-    active_energy_m = models.FloatField(null=False, default=0.0)
-    reactive_energy_p = models.FloatField(null=False, default=0.0)
-    reactive_energy_m = models.FloatField(null=False, default=0.0)
-    apparent_energy_p = models.FloatField(null=False, default=0.0)
-    apparent_energy_m = models.FloatField(null=False, default=0.0)
+    active_power_p = models.FloatField(default=0.0)
+    active_power_m = models.FloatField(default=0.0)
+    reactive_power_p = models.FloatField(default=0.0)
+    reactive_power_m = models.FloatField(default=0.0)
+    apparent_power_p = models.FloatField(default=0.0)
+    apparent_power_m = models.FloatField(default=0.0)
+    power_factor = models.FloatField(default=0.0)
+    supply_frequency = models.FloatField(default=0.0)
+    active_energy_p = models.FloatField(default=0.0)
+    active_energy_m = models.FloatField(default=0.0)
+    reactive_energy_p = models.FloatField(default=0.0)
+    reactive_energy_m = models.FloatField(default=0.0)
+    apparent_energy_p = models.FloatField(default=0.0)
+    apparent_energy_m = models.FloatField(default=0.0)
 
     def __repr__(self):
         return "SmartMeter {:%d.%m.%Y-%H:%M:%S}".format(self.dt)

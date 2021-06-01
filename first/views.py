@@ -80,7 +80,7 @@ class FirstPage(TemplateView):
             logger.error("create_power_chart() failed", ex)
         # Produktion, Verbrauch
         eset_total = create_energy_set_actual_year(dt_end)
-        eset_week1 = create_energy_set_per_week(dt_end, 1)
+        eset_week1 = create_energy_set_per_week(dt_end)
         eset_week2 = create_energy_set_per_week(dt_end, 2)
         eset_day1 = create_energy_set_per_day(dt_end)
         eset_day2 = create_energy_set_per_day(dt_end - timedelta(1))

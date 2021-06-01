@@ -42,7 +42,7 @@ def temperature_chart(dt_begin, dt_end):
             x.append(dt)
             y1.append(item.t)
 
-        fig, ax1 = plt.subplots(1, 1)
+        fig, ax1 = plt.subplots()
         fig.set_size_inches(12.0, 8.0)
         plt.plot(x, y1, linewidth=2, linestyle='-', markersize=1)
 
@@ -83,7 +83,7 @@ def pressure_chart(dt_begin, dt_end):
             x.append(dt)
             y1.append(item.p)
 
-        fig, ax1 = plt.subplots(1, 1)
+        fig, ax1 = plt.subplots()
         fig.set_size_inches(12.0, 8.0)
         plt.plot(x, y1, linewidth=2, linestyle='-', markersize=1)
 

@@ -63,7 +63,7 @@ class WetterdatenChartsView(TemplateView):
             self.list_t.append(item.t)
             self.list_p.append(item.p)
             self.list_h.append(item.h)
-            dt = item.datumzeit.astimezone(tz=pytz.timezone("Europe/Zurich"))
+            item.datumzeit.astimezone(tz=pytz.timezone("Europe/Zurich"))
             self.list_dt.append(item.datumzeit)
 
     @classmethod

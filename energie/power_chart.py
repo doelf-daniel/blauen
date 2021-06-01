@@ -19,7 +19,7 @@ def create_power_chart(dt_begin, dt_end):
             y1.append(item.active_power_p)
             y2.append(item.active_power_m)
 
-        fig, ax1 = plt.subplots(1, 1)
+        fig, ax1 = plt.subplots()
         fig.set_size_inches(12.0, 8.0)
         plt.plot(x, y1, linewidth=2, linestyle='-', markersize=1)
         plt.plot(x, y2, linewidth=2, linestyle='-', markersize=1)

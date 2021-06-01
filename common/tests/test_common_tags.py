@@ -3,7 +3,7 @@ from common.templatetags.common_tags import dec_format
 
 def test_dec_format_1():
     number = 1.234
-    res = dec_format(number, num_of_decimals=1)
+    res = dec_format(number)
     assert '1.2' == res
 
 

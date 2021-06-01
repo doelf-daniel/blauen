@@ -14,7 +14,6 @@ PROD_PERIODS = (
     (PROD_PERIOD_3, PROD_PERIOD_3)
 )
 
-
 TABLE_PERIOD_DAYS = "Tagesdaten"
 TABLE_PERIOD_WEEKS = "Wochendaten"
 TABLE_PERIOD_MONTHS = "Monatsdaten"

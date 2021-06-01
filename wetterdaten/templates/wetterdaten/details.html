@@ -5,7 +5,7 @@
 {% block title %}Daten{% endblock %}
 
 {% block css %}
-    <link href="{% static 'css/actual-data.css' %}" rel="stylesheet">
+  <link href="{% static 'css/actual-data.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block leftAside %}
@@ -14,39 +14,39 @@
 {% endblock leftAside %}
 
 {% block content %}
-    <div class="container">
-        <div>
-            <h2>Letzte Wetterdaten</h2>
-            <br/>
-        </div>
-        {% if no_data %}
-         <h4>Aktuell keine Daten vorhanden</h4>
-        {% else %}
-        <table>
-            <tr>
-                <td>Datum/Zeit</td>
-                <td class="column-rightadjusted">
-                    {% localtime on %}
-                        {{ object.datumzeit|date:'Y-m-d /  H:i' }}
-                    {% endlocaltime %}
-                </td>
-            </tr>
-            <tr>
-                <td>Temperatur</td>
-                <td class="column-rightadjusted">{{ object.t }} °C</td>
-            </tr>
-            <tr>
-                <td>Luftdruck</td>
-                <td class="column-rightadjusted">{{ object.p }} mBar</td>
-            </tr>
-            {% if object.h is not None %}
-                <tr>
-                    <td>relative Luftfeuchte</td>
-                    <td class="column-rightadjusted">{{ object.h }} %</td>
-                </tr>
-            {% endif %}
-        </table>
-    {% endif %}
+  <div class="container">
+    <div>
+      <h2>Letzte Wetterdaten</h2>
+      <br/>
     </div>
+    {% if no_data %}
+      <h4>Aktuell keine Daten vorhanden</h4>
+    {% else %}
+      <table>
+        <tr>
+          <td>Datum/Zeit</td>
+          <td class="column-rightadjusted">
+            {% localtime on %}
+              {{ object.datumzeit|date:'Y-m-d /  H:i' }}
+            {% endlocaltime %}
+          </td>
+        </tr>
+        <tr>
+          <td>Temperatur</td>
+          <td class="column-rightadjusted">{{ object.t }} °C</td>
+        </tr>
+        <tr>
+          <td>Luftdruck</td>
+          <td class="column-rightadjusted">{{ object.p }} mBar</td>
+        </tr>
+        {% if object.h is not None %}
+          <tr>
+            <td>relative Luftfeuchte</td>
+            <td class="column-rightadjusted">{{ object.h }} %</td>
+          </tr>
+        {% endif %}
+      </table>
+    {% endif %}
+  </div>
 
 {% endblock %}
