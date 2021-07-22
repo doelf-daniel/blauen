@@ -15,7 +15,6 @@ class SmartMeterList(APIView):
     """
     List all SmartMeter objects, or create a new SmartMeter object.
     """
-
     authentication_classes = [TokenAuthentication]
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
