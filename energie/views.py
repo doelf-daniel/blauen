@@ -213,7 +213,6 @@ class PvProduktionVerbrauch(TemplateView):
                 context.update({'object_list': object_list})
                 return self.render_to_response(context)
             except Exception as ex:
-                periodic_data = None
                 logger.error("Unexpected failure", ex)
                 db_error = ex.args[0]
         errors = list()

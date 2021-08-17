@@ -84,7 +84,7 @@ def quantize(value, arg=None):
     Arguments cannot have spaces in them.
 
     See the decimal module for more info:
-    http://docs.python.org/library/decimal.html
+    https://docs.python.org/library/decimal.html
     """
     num = decimal.Decimal(str(value))
     options = ["ru", "rf", "rd", "rhd", "rhe", "rhu"]

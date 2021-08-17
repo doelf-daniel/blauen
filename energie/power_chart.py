@@ -28,6 +28,7 @@ def create_power_chart(dt_begin, dt_end):
         plt.grid(True)
         ax1.set_ylim(-0.5, 10.0)
         ax1.set_title("Produktion/Verbrauch")
+
         ax1.minorticks_on()
         ax1.tick_params(which='minor', length=3, width=1, direction='in')
         ax1.tick_params(which='major', length=10, width=1, direction='out')
@@ -43,6 +44,7 @@ def create_power_chart(dt_begin, dt_end):
         for label in ax1.get_xticklabels():
             label.set_rotation(40)
             label.set_horizontalalignment('right')
+
         return fig
     else:
         return None

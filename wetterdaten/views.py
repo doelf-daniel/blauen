@@ -45,6 +45,17 @@ class WetterdatenChartsView(TemplateView):
     list_h = None
     list_dt = None
 
+    def create_image_update_context(self, fig, context):
+        if fig is not None:
+            try:
+                image_base64 = create_image_base64(fig)
+                context.update({'image_base64_1': image_base64})
+                context.update({'data': 'has_data'})
+            except Exception as ex:
+                logger.warning("Bilddatei nicht gefunden!", ex)
+        else:
+            context.update({'data': 'has no data'})
+
     def daten_array_wetter_diagramm_erstellen(self, dt_begin, dt_end):
         if type(dt_begin) == date:
             dt_begin = datetime(year=dt_begin.year, month=dt_begin.month, day=dt_begin.day)
@@ -85,15 +96,7 @@ class WetterdatenChartsView(TemplateView):
         context = super(WetterdatenChartsView, self).get_context_data(**kwargs)
         form = SelectForm(initial=filter_dict)
         context.update({'form': form})
-        if fig is not None:
-            try:
-                image_base64 = create_image_base64(fig)
-                context.update({'image_base64_1': image_base64})
-                context.update({'data': 'has_data'})
-            except Exception as ex:
-                logger.warning("Bilddatei nicht gefunden!", ex)
-        else:
-            context.update({'data': 'has no data'})
+        self.create_image_update_context(fig, context)
         return self.render_to_response(context)
 
     def post(self, request, *args, **kwargs):
@@ -110,15 +113,7 @@ class WetterdatenChartsView(TemplateView):
             self.daten_array_wetter_diagramm_erstellen(dt_begin, dt_end)
             fig = self.make_plot(dt_begin, dt_end)
             context = super(WetterdatenChartsView, self).get_context_data(**kwargs)
-            if fig is not None:
-                try:
-                    image_base64 = create_image_base64(fig)
-                    context.update({'image_base64_1': image_base64})
-                    context.update({'data': 'has_data'})
-                except Exception as ex:
-                    logger.warning("Bilddatei nicht gefunden!", ex)
-            else:
-                context.update({'data': 'has no data'})
+            self.create_image_update_context(fig, context)
         else:
             logger.warning("invalid form")
 
