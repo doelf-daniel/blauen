@@ -68,7 +68,7 @@ DATABASES = {
         'USER': 'doelf',
         'PASSWORD': 'rAC9sFBS',
         'HOST': 'localhost',
-        'PORT': '33000',  # Set to empty string for default.
+        'PORT': '5432',  # Set to empty string for default.
     }
 }
 # ------------- END DATABASE CONFIGURATION -------------

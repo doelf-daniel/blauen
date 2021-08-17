@@ -28,4 +28,3 @@ if settings.DEBUG:
         re_path(r'^404/$', default_views.page_not_found, kwargs={'exception': Exception('Page not Found')}),
         re_path(r'^500/$', default_views.server_error),
     ]
-
