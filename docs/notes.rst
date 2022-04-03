@@ -484,9 +484,15 @@ Create Database
 
 ::
 
-    postgres=# CREATE DATABASE doelf_blauen ENCODING ’UTF8’ TEMPLATE=template0 OWNER doelf;
+    postgres=# CREATE DATABASE doelf_blauen ENCODING 'UTF8' LC_COLLATE 'de_CH.UTF-8' LC_CTYPE 'de_CH.UTF-8' \
+    TEMPLATE template0  OWNER doelf;
     CREATE DATABASE
     postgres=#
+    postgres=# grant all privileges on database doelf_blauen to doelf;
+    GRANT
+    postgres=#
+
+
 
 Authentizierung
 ===============

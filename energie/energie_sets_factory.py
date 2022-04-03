@@ -81,7 +81,7 @@ def create_energy_set_actual_year(actual_date: datetime) -> EnergieSet:
         actual_date = datetime(actual_date.year, actual_date.month, actual_date.day, tzinfo=TZ)
     dt_begin = datetime(actual_date.year, 1, 1, tzinfo=TZ)
     qs0 = SmartMeter.objects.filter(dt__gte=dt_begin).order_by('dt')[:1]
-    if qs0:
+    if qs0 and qs0.count() > 1:
         smart_meter_0 = qs0.first()
         qs1 = SmartMeter.objects.filter(dt__lte=actual_date).order_by('-dt')[:1]
         smart_meter_1 = qs1[0]
