@@ -195,7 +195,7 @@ class WetterDatenListeTag(TemplateView):
             context.update({'form': form})
             context.update({'errors': ''})
             if messwerte:
-                context.update({'actual_date': messwerte.datumzeit})
+                context.update({'actual_date': dt_end})
                 context.update({'has_data': messwerte.count() > 0})
                 context.update({'messwerte': messwerte})
         except Exception:
