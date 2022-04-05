@@ -36,8 +36,8 @@ class FirstPage(TemplateView):
                 buf.close()
                 context.update({'image_base64_1': image_base64})
                 context.update({'data1': 'has_data'})
-            except Exception as ex:
-                logger.error("Bilddatei nicht gefunden!", ex)
+            except Exception:
+                logger.error("Bilddatei nicht gefunden!", exc_info=True)
         else:
             context.update({'data1': 'has no data'})
             logger.error("Bilddatei1 nicht gefunden!")
@@ -51,12 +51,12 @@ class FirstPage(TemplateView):
                 buf.close()
                 context.update({'image_base64_2': image_base64})
                 context.update({'data2': 'has_data'})
-            except Exception as ex:
+            except Exception:
                 context.update({'data2': 'has no data'})
-                logger.error("Bilddatei2 nicht gefunden!", ex)
+                logger.error("Bilddatei2 nicht gefunden!", exc_info=True)
         else:
             context.update({'data2': 'has no data'})
-            logger.error("Bilddatei1 nicht gefunden!")
+            logger.error("Bilddatei1 nicht gefunden!", exc_info=True)
         # Strom Chart
         try:
             dt_begin = dt_end - timedelta(days=2)
@@ -72,12 +72,12 @@ class FirstPage(TemplateView):
                     buf.close()
                     context.update({'image_base64_3': image_base64})
                     context.update({'data3': 'has_data'})
-                except Exception as ex:
-                    logger.error("Bilddatei nicht gefunden!", ex)
+                except Exception:
+                    logger.error("Bilddatei nicht gefunden!", exc_info=True)
             else:
                 context.update({'data3': 'has no data'})
-        except Exception as ex:
-            logger.error("create_power_chart() failed", ex)
+        except Exception:
+            logger.error("create_power_chart() failed", exc_info=True)
         # Produktion, Verbrauch
         eset_total = create_energy_set_actual_year(dt_end)
         eset_week1 = create_energy_set_per_week(dt_end)

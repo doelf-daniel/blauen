@@ -195,11 +195,11 @@ class WetterDatenListeTag(TemplateView):
             context.update({'form': form})
             context.update({'errors': ''})
             if messwerte:
-                context.update({'actual_date': messwerte.date})
+                context.update({'actual_date': messwerte.datumzeit})
                 context.update({'has_data': messwerte.count() > 0})
                 context.update({'messwerte': messwerte})
-        except Exception as ex:
-            logger.error("get data form database failed", ex)
+        except Exception:
+            logger.error("get data form database failed", exc_info=True)
 
         return self.render_to_response(context)
 
@@ -221,8 +221,8 @@ class WetterDatenListeTag(TemplateView):
                 context.update({'actual_date': datum})
                 context.update({'has_data': messwerte.count() > 0})
                 return self.render_to_response(context)
-            except Exception as ex:
-                logger.error("Unexpected failure", ex)
+            except Exception:
+                logger.error("Unexpected failure", exc_info=True)
                 db_error = ex.args[0]
 
         errors = list()

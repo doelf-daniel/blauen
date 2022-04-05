@@ -52,8 +52,8 @@ class Produktion(TemplateView):
                 buf.close()
                 context.update({'image_base64_1': image_base64})
                 context.update({'data': 'has_data'})
-            except Exception as ex:
-                logger.warning("Bilddatei nicht gefunden!", ex)
+            except Exception:
+                logger.warning("Bilddatei nicht gefunden!", exc_info=True)
         else:
             context.update({'data': 'has no data'})
 
@@ -71,8 +71,8 @@ class Produktion(TemplateView):
         try:
             fig = create_power_chart(dt_begin, dt_end)
             self.pass_fig(fig, context)
-        except Exception as ex:
-            logger.error("create_power_chart() failed", ex)
+        except Exception:
+            logger.error("create_power_chart() failed", exc_info=True)
         return self.render_to_response(context)
 
     def post(self, request, *args, **kwargs):
@@ -173,7 +173,7 @@ class PvProduktionVerbrauch(TemplateView):
             context.update({'title': TABLE_PERIOD_DAYS})
             context.update({'object_list': object_list})
         except Exception as ex:
-            logger.error("create_power_chart() failed", ex)
+            logger.error("create_power_chart() failed", exc_info=True)
 
         return self.render_to_response(context)
 
@@ -213,7 +213,7 @@ class PvProduktionVerbrauch(TemplateView):
                 context.update({'object_list': object_list})
                 return self.render_to_response(context)
             except Exception as ex:
-                logger.error("Unexpected failure", ex)
+                logger.error("Unexpected failure", exc_info=True)
                 db_error = ex.args[0]
         errors = list()
         if db_error:
@@ -253,8 +253,8 @@ class MesswerteView(TemplateView):
             context.update({'errors': ''})
             context.update({'title': self.title})
             context.update({'messwerte': messwerte})
-        except Exception as ex:
-            logger.error("create_power_chart() failed", ex)
+        except Exception:
+            logger.error("create_power_chart() failed", exc_info=True)
 
         return self.render_to_response(context)
 
@@ -279,7 +279,7 @@ class MesswerteView(TemplateView):
                 context.update({'title': self.title})
                 return self.render_to_response(context)
             except Exception as ex:
-                logger.error("Unexpected failure", ex)
+                logger.error("Unexpected failure", exc_info=True)
                 db_error = ex.args[0]
 
         errors = list()

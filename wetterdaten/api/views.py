@@ -38,7 +38,7 @@ class WetterDatenList(APIView):
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             except AssertionError:
-                logger.error("assertion error on save")
+                logger.error("assertion error on save", exc_info=True)
         else:
-            logger.error("Serializer got invalid data: {}".format(serializer.data))
+            logger.error("Serializer got invalid data: {}".format(serializer.data), exc_info=True)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

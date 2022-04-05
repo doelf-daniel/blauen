@@ -68,27 +68,32 @@ def create_energy_set_per_week(actual_date, week=1):
         raise ValueError()
     if isinstance(actual_date, date):
         actual_date = datetime(actual_date.year, actual_date.month, actual_date.day, tzinfo=TZ)
-    begin_actual_week = actual_date - timedelta(days=actual_date.weekday())
-    date_to = begin_actual_week - timedelta(7 * (week - 1))
-    date_from = begin_actual_week - timedelta(days=7 * week)
-    es = create_energy_cons_prod_period(date_from, date_to)
-    es.descriptor = TABLE_PERIOD_WEEKS
+    try:
+        begin_actual_week = actual_date - timedelta(days=actual_date.weekday())
+        date_to = begin_actual_week - timedelta(7 * (week - 1))
+        date_from = begin_actual_week - timedelta(days=7 * week)
+        es = create_energy_cons_prod_period(date_from, date_to)
+        es.descriptor = TABLE_PERIOD_WEEKS
+    except Exception:
+        logger.exception("create_energy_set_per_week() failed", exc_info=True)
     return es
 
 
 def create_energy_set_actual_year(actual_date: datetime) -> EnergieSet:
-    if isinstance(actual_date, date):
-        actual_date = datetime(actual_date.year, actual_date.month, actual_date.day, tzinfo=TZ)
-    dt_begin = datetime(actual_date.year, 1, 1, tzinfo=TZ)
-    qs0 = SmartMeter.objects.filter(dt__gte=dt_begin).order_by('dt')[:1]
-    if qs0 and qs0.count() > 1:
-        smart_meter_0 = qs0.first()
-        qs1 = SmartMeter.objects.filter(dt__lte=actual_date).order_by('-dt')[:1]
-        smart_meter_1 = qs1[0]
-        cons = smart_meter_1.active_energy_m - smart_meter_0.active_energy_m
-        prod = smart_meter_1.active_energy_p - smart_meter_0.active_energy_p
-        result = EnergieSet(descriptor=TABLE_PERIOD_ACTUAL_YEAR, consumption=cons, production=prod,
-                            date_from=dt_begin, date_to=actual_date)
-    else:
-        result = None
+    result = None
+    try:
+        if isinstance(actual_date, date):
+            actual_date = datetime(actual_date.year, actual_date.month, actual_date.day, tzinfo=TZ)
+        dt_begin = datetime(actual_date.year, 1, 1, tzinfo=TZ)
+        qs0 = SmartMeter.objects.filter(dt__gte=dt_begin).order_by('dt')[:1]
+        if qs0 and qs0.count() > 1:
+            smart_meter_0 = qs0.first()
+            smart_meter_1 = SmartMeter.objects.filter(dt__lte=actual_date).order_by('-dt').first()
+            if smart_meter_0 and smart_meter_1:
+                cons = smart_meter_1.active_energy_m - smart_meter_0.active_energy_m
+                prod = smart_meter_1.active_energy_p - smart_meter_0.active_energy_p
+                result = EnergieSet(descriptor=TABLE_PERIOD_ACTUAL_YEAR, consumption=cons, production=prod,
+                                    date_from=dt_begin, date_to=actual_date)
+    except Exception as ex:
+        logger.exception("create_energy_set_actual_year() failed ")
     return result
