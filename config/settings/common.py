@@ -14,12 +14,17 @@ import os
 import environ
 from dateutil import tz
 
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+
+
 ROOT_DIR = environ.Path(__file__) - 3  # (base_dir/config/settings/common.py - 3 = base_dir/)
 PROJ_DIR = ROOT_DIR.path('dproject')
 APPS_DIR = os.path.join(PROJ_DIR, 'charts')
 
-env = environ.Env()
-env.read_env()
+environ.Env.read_env(os.path.join(ROOT_DIR, '.env'))
 
 # SECRET CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -68,7 +73,7 @@ MIDDLEWARE = [
 # DEBUG
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
-DEBUG = env.bool('DJANGO_DEBUG', False)
+DEBUG = env('DEBUG')
 
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -94,11 +99,10 @@ MANAGERS = ADMINS
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='doelf://doelf@localhost:33000/doelf_blauen'),
+    'default': env.db('DATABASE_URL', default='doelf://doelf@localhost:5432/doelf_blauen'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
-if DATABASES['default']['ENGINE'] == 'django.db.backends.mysql':
-    DATABASES['default']['OPTIONS'] = {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"}
+print(f"DATABASES: {DATABASES}")
 
 # GENERAL CONFIGURATION
 # ------------------------------------------------------------------------------

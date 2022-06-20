@@ -60,15 +60,4 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 # ------------------------------------------------------------------------------
 ALLOWED_HOSTS = env.list('localhost', 'DJANGO_ALLOWED_HOSTS', default=['*'])
 
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'doelf_blauen',  #
-        'USER': 'doelf',
-        'PASSWORD': 'rAC9sFBS',
-        'HOST': 'localhost',
-        'PORT': '5432',  # Set to empty string for default.
-    }
-}
-# ------------- END DATABASE CONFIGURATION -------------
+
