@@ -308,7 +308,8 @@ class AktuelleDaten(TemplateView):
 
     def get(self, request, *args, **kwargs):
         dt = datetime.now(tz=TZ)
-        if request.is_ajax():
+        # if request.is_ajax:
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
             data = self.find_data(dt)
             return JsonResponse(data, status=200)
 
