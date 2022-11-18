@@ -102,7 +102,7 @@ DATABASES = {
     'default': env.db('DATABASE_URL', default='doelf://doelf@localhost:5432/doelf_blauen'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
-print(f"DATABASES: {DATABASES}")
+# print(f"DATABASES: {DATABASES}")
 
 # GENERAL CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -178,8 +178,8 @@ TEMPLATES = [
     },
 ]
 
-for item in TEMPLATES[0].get('DIRS'):
-    print(item)
+# for item in TEMPLATES[0].get('DIRS'):
+#     print(item)
 
 # STATIC FILE CONFIGURATION
 # ------------------------------------------------------------------------------
