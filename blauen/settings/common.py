@@ -21,6 +21,8 @@ APPS_DIR = os.path.join(PROJ_DIR, 'charts')
 env_path = os.path.join(ROOT_DIR, '.env')
 env = Environ(path=env_path)
 
+print(f"ROOT_DIR: {ROOT_DIR}")
+
 DEBUG = env("DEBUG")
 
 # SECRET CONFIGURATION
@@ -49,7 +51,6 @@ INSTALLED_APPS = (
     'energie',
     'wetterdaten',
     'first',
-
 )
 
 # MIDDLEWARE CONFIGURATION
@@ -65,11 +66,6 @@ MIDDLEWARE = [
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-# DEBUG
-# ------------------------------------------------------------------------------
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
-DEBUG = env('DEBUG', default=True)
 
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -95,8 +91,14 @@ MANAGERS = ADMINS
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
-    'default': env('DATABASE_URL', default='doelf://doelf@localhost:5432/doelf_blauen'),
-    'ATOMIC_REQUESTS': False
+    'default': {
+        'ENGINE':  env('ENGINE'),
+        'NAME': env('NAME'),
+        'USER': env('USER'),
+        'PASSWORD': env('PASSWORD'),
+        'HOST': env('HOST'),
+        'PORT': env('PORT'),
+    }
 }
 
 # print(f"DATABASES: {DATABASES}")

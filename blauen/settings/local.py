@@ -59,6 +59,8 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 # Your local stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
 ALLOWED_HOSTS = list(env('DJANGO_ALLOWED_HOSTS').split(','))
+print(f"DJANGO_ALLOWED_HOSTS: {ALLOWED_HOSTS}")
+pass
 
 
 
