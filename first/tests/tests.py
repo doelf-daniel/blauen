@@ -3,7 +3,7 @@ from datetime import datetime
 # Create your tests here.
 import pytest
 
-from config.settings.common import TZ
+from blauen.settings.common import TZ
 from energie.models import SmartMeter
 
 
