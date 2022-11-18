@@ -3,7 +3,7 @@ from datetime import datetime
 from django.db import models
 from django.db.models import AutoField
 
-from config.settings.common import TZ
+from blauen.settings.common import TZ
 
 
 class Wetterdaten(models.Model):
