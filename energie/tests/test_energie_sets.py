@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 import pytest
 
-from config.settings.common import TZ
+from blauen.settings.common import TZ
 from energie.energie_sets_factory import create_energy_set_per_day, EnergieSet, create_energy_set_per_week
 from energie.models import SmartMeter
 
@@ -85,7 +85,7 @@ def test_create_energy_set_per_day_2(create_some_further_records):
 def test_create_energy_set_per_day_3(create_some_further_records):
     dt = datetime(2020, 4, 26, tzinfo=TZ)
     try:
-        result = create_energy_set_per_week(dt, 0)
+        create_energy_set_per_week(dt, 0)
         assert False
     except ValueError:
         assert True

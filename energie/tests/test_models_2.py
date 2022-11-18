@@ -4,7 +4,7 @@ import pytest
 from django.contrib.auth.models import User
 from django.db import connection
 
-from config.settings.common import TZ
+from blauen.settings.common import TZ
 from energie.models import SmartMeter
 
 
