@@ -11,20 +11,17 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 
 import os
 
-import environ
+from json_environ import Environ
+
 from dateutil import tz
 
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
-
-
-ROOT_DIR = environ.Path(__file__) - 3  # (base_dir/config/settings/common.py - 3 = base_dir/)
-PROJ_DIR = ROOT_DIR.path('dproject')
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+PROJ_DIR = os.path.join(ROOT_DIR, 'dproject')
 APPS_DIR = os.path.join(PROJ_DIR, 'charts')
+env_path = os.path.join(ROOT_DIR, '.env')
+env = Environ(path=env_path)
 
-environ.Env.read_env(os.path.join(ROOT_DIR, '.env'))
+DEBUG = env("DEBUG")
 
 # SECRET CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -46,7 +43,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'django.contrib.admin',
-    'environ',
     'rest_framework',
     'rest_framework.authtoken',
     'common',
@@ -73,7 +69,7 @@ MIDDLEWARE = [
 # DEBUG
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
-DEBUG = env('DEBUG')
+DEBUG = env('DEBUG', default=True)
 
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -99,9 +95,10 @@ MANAGERS = ADMINS
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='doelf://doelf@localhost:5432/doelf_blauen'),
+    'default': env('DATABASE_URL', default='doelf://doelf@localhost:5432/doelf_blauen'),
+    'ATOMIC_REQUESTS': False
 }
-DATABASES['default']['ATOMIC_REQUESTS'] = True
+
 # print(f"DATABASES: {DATABASES}")
 
 # GENERAL CONFIGURATION
@@ -132,7 +129,7 @@ SITE_ID = 1
 USE_I18N = True
 
 LOCALE_PATHS = [
-    PROJ_DIR('locale'),
+    os.path.join(PROJ_DIR, 'locale'),
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#use-l10n
@@ -184,15 +181,15 @@ TEMPLATES = [
 # STATIC FILE CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = str(PROJ_DIR('staticfiles'))
-FILE_UPLOAD_TEMP_DIR = str(PROJ_DIR('tmp'))
+STATIC_ROOT = os.path.join(PROJ_DIR, 'staticfiles')
+FILE_UPLOAD_TEMP_DIR = os.path.join(ROOT_DIR, 'media')
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = '/static/'
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = (
-    str(PROJ_DIR.path('static')),
+    os.path.join(PROJ_DIR, 'static'),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
@@ -204,20 +201,20 @@ STATICFILES_FINDERS = (
 # MEDIA CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(PROJ_DIR('media'))
+MEDIA_ROOT = os.path.join(PROJ_DIR, 'media')
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = '/media/'
 
 # URL Configuration
 # ------------------------------------------------------------------------------
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = 'blauen.urls'
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 LOGIN_REDIRECT_URL = '/'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = 'blauen.wsgi.application'
 
 # PASSWORD VALIDATION
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
