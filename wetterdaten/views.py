@@ -13,7 +13,7 @@ from matplotlib.dates import AutoDateLocator, ConciseDateFormatter
 from pandas.plotting import register_matplotlib_converters
 
 from common.models import (DAUER_WOCHE)
-from config.settings.common import TZ
+from blauen.settings.common import TZ
 from .forms import SelectForm, SelectDateForm
 from .models import Wetterdaten
 
@@ -223,7 +223,6 @@ class WetterDatenListeTag(TemplateView):
                 return self.render_to_response(context)
             except Exception:
                 logger.error("Unexpected failure", exc_info=True)
-                db_error = ex.args[0]
 
         errors = list()
         if db_error:

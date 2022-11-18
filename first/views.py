@@ -6,7 +6,7 @@ from io import BytesIO
 # Create your views here.
 from django.views.generic import TemplateView
 
-from config.settings.common import TZ
+from blauen.settings.common import TZ
 from energie.energie_sets_factory import create_energy_set_per_week, create_energy_set_per_day, \
     create_energy_set_actual_year
 from energie.power_chart import create_power_chart
