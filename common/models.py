@@ -1,4 +1,4 @@
-from config.settings.common import TZ
+from blauen.settings.common import TZ
 
 TIMEZONE = TZ
 
