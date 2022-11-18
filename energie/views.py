@@ -10,7 +10,7 @@ from pandas.plotting import register_matplotlib_converters
 from qsstats import QuerySetStats
 
 from common.datetime_functions import begin_of_week_with_date, begin_of_month_with_date, begin_month_before
-from config.settings.common import TZ
+from blauen.settings.common import TZ
 from energie.forms import SelectFormEnergieChart, PROD_PERIOD_2, PROD_PERIOD_3, SelectFormEnergieTables, \
     TABLE_PERIOD_DAYS, SelectFormMesswerte, TABLE_PERIOD_WEEKS, TABLE_PERIOD_MONTHS
 from energie.models import SmartMeter
@@ -172,7 +172,7 @@ class PvProduktionVerbrauch(TemplateView):
             context.update({'erorrs': ''})
             context.update({'title': TABLE_PERIOD_DAYS})
             context.update({'object_list': object_list})
-        except Exception as ex:
+        except Exception:
             logger.error("create_power_chart() failed", exc_info=True)
 
         return self.render_to_response(context)
