@@ -378,7 +378,7 @@
             if (hasOwnProp(parentConfig, prop) &&
                 !hasOwnProp(childConfig, prop) &&
                 isObject(parentConfig[prop])) {
-                // make sure changes to properties don't modify parent config
+                // make sure changes to properties don't modify parent blauen
                 res[prop] = extend({}, res[prop]);
             }
         }
@@ -1813,7 +1813,7 @@
         meridiemParse: defaultLocaleMeridiemParse
     };
 
-    // internal storage for locale config files
+    // internal storage for locale blauen files
     var locales = {};
     var localeFamilies = {};
     var globalLocale;
@@ -1897,9 +1897,9 @@
             config.abbr = name;
             if (locales[name] != null) {
                 deprecateSimple('defineLocaleOverride',
-                    'use moment.updateLocale(localeName, config) to change ' +
+                    'use moment.updateLocale(localeName, blauen) to change ' +
                     'an existing locale. moment.defineLocale(localeName, ' +
-                    'config) should only be used for creating a new locale ' +
+                    'blauen) should only be used for creating a new locale ' +
                     'See http://momentjs.com/guides/#/warnings/define-locale/ for more info.');
                 parentConfig = locales[name]._config;
             } else if (config.parentLocale != null) {
@@ -1959,7 +1959,7 @@
             // backwards compat for now: also set the locale
             getSetGlobalLocale(name);
         } else {
-            // pass null for config to unupdate, useful for tests
+            // pass null for blauen to unupdate, useful for tests
             if (locales[name] != null) {
                 if (locales[name].parentLocale != null) {
                     locales[name] = locales[name].parentLocale;
@@ -2132,7 +2132,7 @@
 
             // TODO: We need to take the current isoWeekYear, but that depends on
             // how we interpret now (local, utc, fixed offset). So create
-            // a now version of current config (take local/utc/offset flags, and
+            // a now version of current blauen (take local/utc/offset flags, and
             // create now).
             weekYear = defaults(w.GG, config._a[YEAR], weekOfYear(createLocal(), 1, 4).year);
             week = defaults(w.W, 1);
@@ -2435,7 +2435,7 @@
             token = tokens[i];
             parsedInput = (string.match(getParseRegexForToken(token, config)) || [])[0];
             // console.log('token', token, 'parsedInput', parsedInput,
-            //         'regex', getParseRegexForToken(token, config));
+            //         'regex', getParseRegexForToken(token, blauen));
             if (parsedInput) {
                 skipped = string.substr(0, string.indexOf(parsedInput));
                 if (skipped.length > 0) {
