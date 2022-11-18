@@ -2,7 +2,7 @@ from datetime import datetime, date
 
 from django import forms
 
-from config.settings.common import TZ
+from blauen.settings.common import TZ
 
 PROD_PERIOD_1 = '1-2 Tage'
 PROD_PERIOD_2 = '3-4 Tage'

@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 
 from dateutil.rrule import rrule, MONTHLY, WEEKLY, DAILY
 
-from config.settings.common import TZ
+from blauen.settings.common import TZ
 
 
 def begin_of_week_with_date(dt_begin):

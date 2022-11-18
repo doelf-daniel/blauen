@@ -3,7 +3,7 @@ from datetime import date, timedelta, datetime
 
 from django.utils import timezone
 
-from config.settings.common import TZ
+from blauen.settings.common import TZ
 from energie.forms import TABLE_PERIOD_DAYS, TABLE_PERIOD_WEEKS, TABLE_PERIOD_ACTUAL_YEAR
 from energie.models import SmartMeter, EnergieSet
 

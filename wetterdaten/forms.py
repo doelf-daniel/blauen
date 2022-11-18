@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from django import forms
 
 from common.models import *
-from config.settings.common import TZ
+from blauen.settings.common import TZ
 
 logger = logging.getLogger(__name__)
 

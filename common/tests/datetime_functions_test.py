@@ -2,7 +2,7 @@ from datetime import datetime
 
 from common.datetime_functions import begin_of_week_with_date, begin_of_month_with_date
 from common.datetime_functions import diff_month, list_month_begin, month_list, week_list
-from config.settings.common import TZ
+from blauen.settings.common import TZ
 
 
 def test_begin_actual_week_0():
