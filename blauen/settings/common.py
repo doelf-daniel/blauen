@@ -18,7 +18,7 @@ from dateutil import tz
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 PROJ_DIR = os.path.join(ROOT_DIR, 'dproject')
 APPS_DIR = os.path.join(PROJ_DIR, 'charts')
-env_path = os.path.join(ROOT_DIR, '.env')
+env_path = os.path.join(ROOT_DIR, '.env_blauen')
 env = Environ(path=env_path)
 
 print(f"ROOT_DIR: {ROOT_DIR}")
