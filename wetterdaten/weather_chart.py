@@ -1,5 +1,6 @@
 import logging
-
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 from django.utils import timezone
 from django_pandas.io import read_frame
