@@ -66,7 +66,7 @@ node_modules/
 .sass-cache
 
 # virtual environments
-.env
+.env_blauen
 .venv
 
 # User-uploaded media
