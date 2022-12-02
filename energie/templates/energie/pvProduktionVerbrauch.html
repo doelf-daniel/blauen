@@ -3,104 +3,107 @@
 {% load common_tags %}
 
 {% block css %}
-  <link href="{% static 'css/datepicker1.css' %}" rel="stylesheet">
-  <link href="{% static 'css/pv.css' %}" rel="stylesheet">
+    <link href="{% static 'css/datepicker1.css' %}" rel="stylesheet">
+    <link href="{% static 'css/pv.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block title %}Elektrizität: Produktion/Verbrauch{% endblock %}
 
 {% block content %}
-  <div class="container">
-    <div class="item">
-      <h1>Produktion/Verbrauch</h1>
+    <div class="container">
+        <div class="item">
+            <h1>Produktion/Verbrauch</h1>
 
 
-      <form action="" method="post">
-        {% csrf_token %}
-        <div class="form-div0">
-          <div class="form-div1">
-            <div class="ra">
-              <label class="label1" for="{{ form.begin.id_for_label }}">von</label>
-            </div>
-            <div>
-              {{ form.begin }}
-            </div>
-            <div class="ra">
-              <label class="label2" for="{{ form.end.id_for_label }}">bis</label>
-            </div>
-            <div>
-              {{ form.end }}
-            </div>
-          </div>
-          <div class="form-div2">
-            <div class="ra">
-              <label for="{{ form.period.id_for_label }}">Art</label>
-            </div>
-            <div>
-              {{ form.period }}
-            </div>
-            <div>
-              <input id="submit-button" class="button ra" type="submit" value="...">
-            </div>
-          </div>
+            <form action="" method="post">
+              {% csrf_token %}
+                <div class="form-div">
+                    <div>
+                        <label class="label1" for="{{ form.begin.id_for_label }}">von</label>
+                    </div>
+
+                    <div>
+                        <label class="label2" for="{{ form.end.id_for_label }}">bis</label>
+                    </div>
+
+                    <div>
+                      {{ form.begin }}
+                    </div>
+
+                    <div>
+                      {{ form.end }}
+                    </div>
+
+
+                    <div>
+                        <label for="{{ form.period.id_for_label }}">Art</label>
+                    </div>
+
+                    <div></div>
+                    <div>
+                      {{ form.period }}
+                    </div>
+                    <div>
+                        <input id="submit-button" class="button square" type="submit" value="OK">
+                    </div>
+                </div>
+            </form>
+
+
         </div>
-    </form>
 
+        <br/>
+      {% if errors %}
+          <div class="item">
+            {{ errors }}
+          </div>
+      {% endif %}
 
-  </div>
-
-  <br/>
-  {% if errors %}
-    <div class="item">
-      {{ errors }}
+        <div class="item">
+          {% if object_list %}
+              <table class="dataTable">
+                  <thead>
+                  <tr>
+                      <th>Datum</th>
+                      <th>Ver.</th>
+                      <th>Prod.</th>
+                      <th>Ertrag</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for item in object_list %}
+                      <tr>
+                          <td>{{ item.date_from|date:"d.m.Y" }}</td>
+                          <td class="column-rightadjusted">{{ item.consumption|dec_format }}</td>
+                          <td class="column-rightadjusted">{{ item.production|dec_format }}</td>
+                          <td class="column-rightadjusted">{{ item.difference|dec_format }}</td>
+                      </tr>
+                  {% endfor %}
+                  </tbody>
+              </table>
+          {% else %}
+              <br/>
+              <h3>Keine entsprechenden Daten vorhanden!</h3>
+          {% endif %}
+        </div>
     </div>
-  {% endif %}
-
-  <div class="item">
-    {% if object_list %}
-      <table class="dataTable">
-        <thead>
-        <tr>
-          <th>Datum</th>
-          <th>Ver.</th>
-          <th>Prod.</th>
-          <th>Ertrag</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for item in object_list %}
-          <tr>
-            <td>{{ item.date_from|date:"d.m.Y" }}</td>
-            <td class="column-rightadjusted">{{ item.consumption|dec_format }}</td>
-            <td class="column-rightadjusted">{{ item.production|dec_format }}</td>
-            <td class="column-rightadjusted">{{ item.difference|dec_format }}</td>
-          </tr>
-        {% endfor %}
-        </tbody>
-      </table>
-    {% else %}
-      <br/>
-      <h3>Keine entsprechenden Daten vorhanden!</h3>
-    {% endif %}
-  </div>
-  </div>
 {% endblock %}
 
 {% block javascript %}
-  <script src="{% static 'js/datepicker.js' %}"></script>
-  <script src="{% static 'js/datepicker-de.js' %}"></script>
+    <script src="{% static 'js/datepicker.js' %}"></script>
+    <script src="{% static 'js/datepicker-de.js' %}"></script>
 
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $(function () {
-        const tr = $('.dataTable').find('tr');
-        tr.bind('click', function (event) {
-          const values = '';
-          tr.removeClass('row-highlight');
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $(function () {
+          const tr = $('.dataTable').find('tr');
+          tr.bind('click', function (event) {
+            const values = '';
+            tr.removeClass('row-highlight');
 
+          });
         });
+        $(".datePicker").datepicker();
       });
-      $(".datePicker").datepicker();
-    });
-  </script>
+    </script>
 {% endblock javascript %}
