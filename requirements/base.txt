@@ -14,9 +14,9 @@ iniconfig==1.1.1
 json-environ==0.1.1
 kiwisolver==1.4.4
 matplotlib==3.6.2
-numpy==1.23.4
+numpy==1.23.5
 packaging==21.3
-pandas==1.5.1
+pandas==1.5.2
 Pillow==9.3.0
 pluggy==1.0.0
 psycopg2-binary==2.9.5

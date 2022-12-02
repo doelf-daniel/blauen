@@ -1,18 +1,12 @@
 .content-container {
   display: grid;
   grid-template-columns: 1fr;
-  justify-items: center;
+  grid-gap: 10px;
 }
 
 .item {
-  border: blue solid 1px;
+  border: blue solid 2px;
   padding: 10px;
-}
-
-.item-b {
-  border: blue solid 1px;
-  padding: 10px;
-  justify-self: stretch;
 }
 
 .responsive {
@@ -38,5 +32,6 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+/*# sourceMappingURL=first.css.map */
 
 /*# sourceMappingURL=first.css.map */

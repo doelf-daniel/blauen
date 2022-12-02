@@ -8,6 +8,7 @@
   padding: 5px;
   display: grid;
   justify-items: center;
+  width: 100%;
 }
 
 .dataTable {
@@ -16,32 +17,28 @@
   border-width: 1px;
   border-color: #707070;
   border-spacing: 10px;
-  font: 20px "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif, serif;
+  font: 16px "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif, serif;
   padding: 0;
   box-shadow: 1px 1px 3px 1px #6E6D6D;
   table-layout: fixed;
 }
-
 .dataTable th {
   color: #FFFFFF;
   background: #304999;
   font-weight: bold;
-  padding-left: 1.0rem;
-  padding-right: 1.0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   text-align: center;
   vertical-align: top;
 }
-
 .dataTable .th2 {
   background: rgba(40, 68, 157, 0.8);
 }
-
 .dataTable tr {
   color: #000000;
   font-weight: normal;
   background: #bbccFF;
 }
-
 .dataTable tr td {
   font-size: 0.8em;
   padding: 0.5em 0.6em;
@@ -50,32 +47,71 @@
   border-style: solid;
   border-width: 1px;
   border-color: #bbb;
-  margin-left: 1.0rem;
-  margin-right: 1.0rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
-
 .dataTable tr .column-centered {
   text-align: center;
 }
-
 .dataTable tr .column-rightadjusted {
   text-align: right;
 }
-
 .dataTable tr:nth-child(odd) td {
   background: rgba(187, 204, 255, 0.1);
 }
-
 .dataTable tr:nth-child(odd):hover td {
-  background: #96aac8;
+  background: rgb(150, 170, 200);
 }
-
 .dataTable tr:nth-child(even) td {
   background: #f8f8f8;
 }
-
 .dataTable tr:nth-child(even):hover td {
   background: yellow;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1rem;
+  }
+}
+.form-div0 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.form-div1 {
+  display: grid;
+  grid-template-columns: 60px 100px 40px 100px 1fr;
+  grid-auto-flow: row;
+  align-content: center;
+}
+
+.form-div2 {
+  display: grid;
+  grid-template-columns: 60px 180px 1fr;
+  grid-auto-flow: row;
+  align-content: center;
+}
+
+input {
+  max-width: 90px;
+  min-width: 90px;
+}
+
+.button {
+  max-width: 28px !important;
+  min-width: 28px;
+  max-height: 28px;
+  min-height: 28px;
+}
+
+.ra {
+  text-align: right;
+  padding-right: 5px;
 }
 
 /*# sourceMappingURL=pv.css.map */

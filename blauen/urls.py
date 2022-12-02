@@ -15,7 +15,6 @@ urlpatterns = [
                   re_path(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
                   re_path(r'^admin/', admin.site.urls),
                   re_path(r'^energie/', include('energie.urls', namespace='energie')),
-                  # url(r'^tph/', include('tph.urls', namespace='tph')),
                   re_path(r'^wetterdaten/', include('wetterdaten.urls', namespace='wetterdaten')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
