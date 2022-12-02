@@ -12,19 +12,24 @@
 {% block content %}
   <div class="container">
     <div class="item">
-      <h1>PV Produktion/Verbrauch</h1>
+      <h1>Produktion/Verbrauch</h1>
 
       <div class="item">
         <form action="" method="post">
           {% csrf_token %}
           <div class="chart-form-div">
-            <label class="label1" for="{{ form.begin.id_for_label }}">von</label>
-            {{ form.begin }}
-            <label class="label2" for="{{ form.end.id_for_label }}">bis</label>
-            {{ form.end }}
-            <label class="label2" for="{{ form.period.id_for_label }}">Art</label>
-            {{ form.period }}
-            <input id="submit-button" class="button" type="submit" value="...">
+            <div>
+              <label class="label1" for="{{ form.begin.id_for_label }}">von</label>
+              {{ form.begin }}
+              <label class="label2" for="{{ form.end.id_for_label }}">bis</label>
+              {{ form.end }}
+            </div>
+            <div>
+
+              <label class="label2" for="{{ form.period.id_for_label }}">Art</label>
+              {{ form.period }}
+              <input id="submit-button" class="button" type="submit" value="...">
+            </div>
           </div>
         </form>
       </div>
@@ -42,8 +47,8 @@
           <thead>
           <tr>
             <th>Datum</th>
-            <th>Verbrauch</th>
-            <th>Produktion</th>
+            <th>Ver.</th>
+            <th>Prod.</th>
             <th>Ertrag</th>
           </tr>
           </thead>
